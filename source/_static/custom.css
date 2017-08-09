@@ -1,0 +1,286 @@
+.wy-nav-content {
+    max-width: 850px;
+}
+
+.wy-nav-content a {
+    color: #00aeef;
+}
+
+.wy-nav-content a:hover {
+    color: #7dcdf2;
+}
+
+.wy-nav-content a:visited {
+    color: #1960ab;
+}
+
+/** Toggle Box */
+.toggle-box-node {
+    border: 1px black;
+}
+
+/* Headlines */
+h2, h3, h4, h5, h6 {
+    margin: 24px 0 12px 0;
+}
+
+/* Admonition */
+.rst-content .warning {
+    background: #fcf8d5;
+}
+
+.rst-content .warning .admonition-title {
+    background: #ffbb00 !important;
+}
+
+.rst-content .note {
+    background: #effaff;
+}
+
+.rst-content .note .admonition-title {
+    background: #00aeef !important;
+}
+
+.rst-content .hint {
+    background: #ececec;
+}
+
+.rst-content .hint .admonition-title {
+    background: #cccccc;
+}
+
+.rst-content .admonition-todo {
+    background: #effaff;
+}
+
+.rst-content .admonition-todo .admonition-title {
+    background: #1960ab;
+}
+
+.rst-content .custom.admonition-title:before {
+    content: "";
+    margin-right: -3px;
+}
+
+/* Custom admonition */
+
+.admonition.purple .admonition-title {
+    background: #610078;
+}
+
+.admonition.dark-purple .admonition-title {
+    background: #380045;
+}
+
+.admonition.purple,
+.admonition.dark-purple {
+    background: #f5f0f9;
+}
+
+.admonition.blue .admonition-title {
+    background: #00aeef;
+}
+
+.admonition.blue {
+    background: #effaff;
+}
+
+.admonition.dark-blue .admonition-title {
+    background: #1960ab;
+}
+
+.admonition.dark-blue {
+    background: #effaff;
+}
+
+.admonition.green .admonition-title {
+    background: #89a329;
+}
+
+.admonition.green {
+    background: #f4f7e7;
+}
+
+.admonition.gray .admonition-title {
+    background: #c6c8ca;
+}
+
+.admonition.gray {
+    background: #f5f5f6;
+}
+
+.admonition.transparent > .admonition-title:first-child {
+    background: none;
+    color: #000;
+}
+
+.admonition.transparent {
+    background: none;
+    padding: 12px 12px 0 0;
+}
+
+/* Custom toggle list */
+
+.toggle {
+    margin-bottom: 12px;
+    padding-bottom: 0;
+}
+
+.toggle .custom-text {
+    padding-bottom: 12px;
+}
+
+.custom-text p {
+    margin-bottom: 0;
+}
+
+.custom-text .highlight-console,
+.custom-text .highlight-default,
+.custom-text .highlight-html,
+.custom-text .highlight-javascript,
+.custom-text .highlight-json,
+.custom-text .highlight-none,
+.custom-text .highlight-xml {
+    margin: 0;
+}
+
+/* Custom Text */
+
+.custom-text-newline {
+    display: block;
+}
+
+/** Custom table **/
+
+.custom-table .wy-table-responsive ul li {
+    list-style: none;
+    margin-left: 0 !important;
+}
+
+/* Override content boxes */
+
+.note.toggle,
+.attention.toggle,
+.caution.toggle,
+.danger.toggle,
+.error.toggle,
+.hint.toggle,
+.important.toggle,
+.tip.toggle,
+.warning.toggle,
+.seealso.toggle,
+.admonition-todo.toggle {
+    padding-bottom: 0;
+    margin-bottom: 12px;
+}
+
+/* Override table width restrictions, from https://github.com/snide/sphinx_rtd_theme/issues/117#issuecomment-41506687 */
+.wy-table-responsive {
+    margin: 24px 0 0 0;
+    max-width: 100%;
+    overflow: visible;
+}
+
+.wy-table-responsive .docutils {
+    width: 100%;
+}
+
+.wy-table-responsive table td {
+    white-space: normal;
+    vertical-align: inherit !important;
+}
+
+.wy-table-responsive table th {
+    white-space: normal;
+}
+
+.wy-table-responsive table td ul {
+    margin-bottom: 0 !important;
+
+}
+
+.wy-table-responsive table td ul li {
+    margin-left: 16px !important;
+}
+
+.wy-table-responsive table td p {
+    font-size: 14px;
+}
+
+.wy-side-nav-search {
+    background-color: #00aeef !important;
+}
+
+.wy-side-nav-search > div.version {
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* Style rubric */
+
+.rubric > .h1 {
+    font-size: 175%;
+}
+
+.rubric > .h2 {
+    font-size: 150%;
+}
+
+.rubric > .h3 {
+    font-size: 125%;
+}
+
+.rubric > .h4 {
+    font-size: 100%;
+}
+
+.rubric > .h1,
+.rubric > .h2 {
+    font-weight: 700;
+    font-family: "Roboto Slab", "ff-tisa-web-pro", "Georgia", Arial, sans-serif;
+}
+
+.rubric > .h3,
+.rubric > .h4 {
+    font-weight: 500;
+    font-family: "Roboto Slab", "ff-tisa-web-pro", "Georgia", Arial, sans-serif;
+}
+
+/* Text colors */
+
+.fg-green {
+    color: #89a329;
+    font-weight: bold;
+}
+
+.fg-red {
+    color: #e74023;
+    font-weight: bold;
+}
+
+/* Code block */
+
+.code-block-caption .caption-text {
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 12px;
+}
+
+.code-block-caption .headerlink {
+    display: none;
+}
+
+/* Images / Figures */
+
+.double-columned-images {
+    overflow: auto;
+}
+
+.rst-content div.figure p.caption {
+    margin: 12px 0 0 0;
+}
+
+/* Footer */
+
+.rst-footer-buttons {
+    padding-top: 24px;
+}
