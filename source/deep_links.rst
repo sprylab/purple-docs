@@ -12,6 +12,8 @@ Deep Links
 
   The :code:`<PACKAGE_NAME>` of the app can be found on the app overview page in the Purple DS Manager.
 
+  The :code:`<PACKAGE_NAME>` in the deep link has to be used in lower case even though the app's actual package name can contain capital letters.
+
 .. toggle-box:: Example
   :color: transparent
 
@@ -1145,7 +1147,7 @@ Kiosk
 
   **URL**
 
-  purple://kiosk/issue/:code:`<ISSUE>`/page/:code:`<PAGE>`/open?# :code:`<ELEMENT>`
+  purple://kiosk/issue/:code:`<ISSUE>`/page/:code:`<PAGE>`/open# :code:`<ELEMENT>`
 
   purple://kiosk/issue/:code:`<ISSUE>`/page/:code:`<PAGE>`/open?align= :code:`<ALIGNMENT>` # :code:`<ELEMENT>`
 
@@ -1634,45 +1636,45 @@ The latest version is also available here: https://composer.purplepublish.com/pu
   .. code-block:: javascript
 
     window.purpleInterface = {
-      callbacks: {},
-      util: {
+    callbacks: {},
+    util: {
         postMessage: function (type, key, value, callback) {
 
-          if (window !== window.parent) {
+            if (window !== window.parent) {
 
-            // create requestData
-            var requestData = {
-              type: type,
-              key: key
-            };
-            if (value) {
-              requestData.value = value;
+                // create requestData
+                var requestData = {
+                    type: type,
+                    key: key
+                };
+                if (value) {
+                    requestData.value = value;
+                }
+
+                // call postMessage
+                window.parent.postMessage(JSON.stringify(requestData), '*');
             }
-
-            // call postMessage
-            window.parent.postMessage(JSON.stringify(requestData), '*');
-          }
 
         }
       }
     };
 
     document.addEventListener('DOMContentLoaded', function () {
-      window.addEventListener('message', window.purpleInterface.util.receiveMessage);
+        window.addEventListener('message', window.purpleInterface.util.receiveMessage);
 
-      window.purpleInterface.util.postMessage('LOAD', 'LOAD', null, function () {
+        window.purpleInterface.util.postMessage('LOAD', 'LOAD', null, function () {
 
-        if (!window.purple) {
-          var links = document.querySelectorAll('a[href^="purple://"], a[ ^="pkapp://"], a[href^="pkitem://"]');
-          for (var i = 0; i < links.length; i++) {
-            links[i].addEventListener('click', function (e) {
-              window.purpleInterface.util.postMessage('ACTION_URL', 1, this.href);
-              e.preventDefault();
-            });
-          }
-        }
+            if (!window.purple) {
+                var links = document.querySelectorAll('a[href^="purple://"], a[ ^="pkapp://"], a[href^="pkitem://"]');
+                for (var i = 0; i < links.length; i++) {
+                    links[i].addEventListener('click', function (e) {
+                        window.purpleInterface.util.postMessage('ACTION_URL', 1, this.href);
+                        e.preventDefault();
+                    });
+                }
+            }
 
-      });
+        });
     });
 
 

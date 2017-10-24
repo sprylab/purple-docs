@@ -127,8 +127,39 @@ Configuration
 App Menu
 ********
 
-The app's side menu can be configured using the ``app_menu.xml``. This file contains a list of ``navigationNode`` entries which represent items in the app menu.
-The ``targetURL`` attribute describes the action that will be called when that entry is clicked.
+The app's side menu can be configured using the :code:`app_menu.xml` file. This file
+contains a list of :code:`navigationNode` entries which represent items in the app
+menu and optionally one :code:`navigationHeader` and one :code:`navigationFooter`
+element.
+
+Navigation-Nodes
+================
+
+The :code:`targetURL` attribute describes the action that will be called when that
+entry is clicked.
+
+Navigation Header / Footer
+==========================
+
+The app menu can be configured to show custom logos at the top and bottom.
+
+The :code:`navigationHeader` and :code:`navigationFooter` elements can contain
+:code:`image` and :code:`search` child elements.
+
+The :code:`image` element has a required :code:`URL` and :code:`height` attribute
+and can optionally also specify a background color and padding at each side.
+
+The :code:`search` element can be used to insert the search field in the menu.
+If the :code:`navigationHeader` is used a :code:`search` element must be added
+if the search should be shown. If it is missing no search will be visible.
+
+.. note::
+
+  If the search is disabled through the app property adding a :code:`search`
+  element will have no effect - no search will be visible.
+
+Example
+=======
 
 .. toggle-box:: Structure
 
@@ -136,15 +167,33 @@ The ``targetURL`` attribute describes the action that will be called when that e
 
     <?xml version="1.0" encoding="UTF-8"?>
     <app_menu>
+        <navigationHeader>
+            <image URL="top_logo.png"
+                   height="20.0"
+                   backgroundColor="#fefefe45"
+                   paddingLeft="10.0"
+                   paddingTop="20.0"
+                   paddingRight="30.0"
+                   paddingBottom="40.0" />
+            <search />
+        </navigationHeader>
+
         <navigation type="app_menu">
             <navigationNode targetURL="beliebige Url">
                 <title>Title of this entry</title>
                 <iconURL>Icon_for_this_entry.png</iconURL>
             </navigationNode>
-
-            ...
-
         </navigation>
+
+        <navigationFooter>
+            <image URL="bottom_logo.png"
+                   height="20.0"
+                   backgroundColor="#fefefe45"
+                   paddingLeft="10.0"
+                   paddingTop="20.0"
+                   paddingRight="30.0"
+                   paddingBottom="40.0" />
+        </navigationFooter>
     </app_menu>
 
 .. hint:: All values must be properly escaped as required by the XML standard.

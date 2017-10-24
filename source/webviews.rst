@@ -120,6 +120,66 @@ This interface is for app-wide information such as the device's connectivity sta
 
   This method removes the listener that was added with :code:`addConnectionStateListener` to stop receiving callbacks.
 
+
+App-Browser
+***********
+
+This interface can be used to retrieve information about the configuration of the
+current webview, e.g. if it's displayed modally or embedded, has titlebar and controls.
+
+.. code-block:: javascript
+  :linenos:
+  :caption: App-Browser JavaScript-Interface
+
+  window.purple = {
+     appBrowser: {
+        getDisplayMode: function (callback) {
+            // Impl
+        },
+        isTitleBarEnabled: function (callback) {
+            // Impl
+        },
+        isControlsEnabled: function (callback) {
+            // Impl
+        }
+     }
+  }
+
+.. versioned-toggle-box:: getDisplayMode
+  :color: blue
+  :versionadded-android: 3.5.0
+  :versionadded-ios: 3.5.0
+  :versionadded-web-player: 3.5.0
+
+  Get the display mode for the current webview.
+
+  This method has one parameter, a callback function which will get the display
+  mode value in as a single string parameter.
+
+  Values can be :code:`embedded` or :code:`modal`.
+
+.. versioned-toggle-box:: isTitleBarEnabled
+  :color: blue
+  :versionadded-android: 3.5.0
+  :versionadded-ios: 3.5.0
+  :versionadded-web-player: 3.5.0
+
+  Get the titlebar configuration for the current webview.
+
+  This method has one parameter, a callback function which will get a boolean
+  value in as a single parameter.
+
+.. versioned-toggle-box:: isControlsEnabled
+  :color: blue
+  :versionadded-android: 3.5.0
+  :versionadded-ios: 3.5.0
+  :versionadded-web-player: 3.5.0
+
+  Get the controls configuration for the current webview.
+
+  This method has one parameter, a callback function which will get a boolean
+  value in as a single parameter.
+
 Metadata
 ********
 
