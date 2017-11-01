@@ -5,8 +5,8 @@ Facebook
 .. versionadded:: 2.1.0
 .. versionchanged:: 3.5.0 Added support for action templates and parameters
 
-|Facebook| is a tracking service which does not support tracking events and storing attributes.
-It only supports tracking the installation of the app.
+|Facebook| is a tracking service which supports tracking events (actions and purchases).
+It also supports tracking the installation of the app.
 
 .. |Facebook| raw:: html
 

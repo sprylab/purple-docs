@@ -33,6 +33,7 @@ Currently Purple DS apps support several different tracking services.
 - :doc:`Flurry <tracking/flurry>`
 - :doc:`Google Analytics <tracking/google_analytics>`
 - :doc:`IVW <tracking/ivw>`
+- :doc:`Amazon Pinpoint <tracking/pinpoint>`
 
 
 .. toctree::
@@ -45,6 +46,8 @@ Currently Purple DS apps support several different tracking services.
   tracking/flurry
   tracking/google_analytics
   tracking/ivw
+  tracking/pinpoint
+
 
 Configuration
 #############

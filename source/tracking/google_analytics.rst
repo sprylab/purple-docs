@@ -51,8 +51,8 @@ Purchases
 *********
 
 Google Analytics supports tracking of purchase events. Purchase events cannot
-be configured (besides enabling/disabling the whole event) and always the
-track the product id, currency code and price.
+be configured (besides enabling/disabling the whole event) and always track the
+product id, currency code and price.
 
 Attributes
 **********
