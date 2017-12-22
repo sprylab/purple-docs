@@ -14,3 +14,4 @@ Welcome to Purple's documentation!
    dynamic_resources
    tracking
    webviews
+   entitlement

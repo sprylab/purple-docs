@@ -28,7 +28,7 @@ Currently Purple DS apps support several different tracking services.
 
 - :doc:`Adjust <tracking/adjust>`
 - :doc:`Adobe Analytics <tracking/adobe>`
-- :doc:`Appboy <tracking/appboy>`
+- :doc:`Braze (Appboy) <tracking/appboy>`
 - :doc:`Facebook <tracking/facebook>`
 - :doc:`Flurry <tracking/flurry>`
 - :doc:`Google Analytics <tracking/google_analytics>`

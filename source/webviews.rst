@@ -2,7 +2,20 @@
 Webviews
 ########
 
+.. toctree::
+
 .. _webviews-js-api:
+
+General
+#######
+
+Support for window.print
+************************
+
+.. versionadded:: 3.7.0
+
+Apps support the :code:`window.print` JavaScript-API.
+The standard system print dialog is opened if :code:`window.print` is called.
 
 JavaScript-Interfaces
 #####################
@@ -150,6 +163,7 @@ current webview, e.g. if it's displayed modally or embedded, has titlebar and co
   :versionadded-android: 3.5.0
   :versionadded-ios: 3.5.0
   :versionadded-web-player: 3.5.0
+  :versionadded-web-kiosk: 3.7.0
 
   Get the display mode for the current webview.
 
@@ -163,6 +177,7 @@ current webview, e.g. if it's displayed modally or embedded, has titlebar and co
   :versionadded-android: 3.5.0
   :versionadded-ios: 3.5.0
   :versionadded-web-player: 3.5.0
+  :versionadded-web-kiosk: 3.7.0
 
   Get the titlebar configuration for the current webview.
 
@@ -174,6 +189,7 @@ current webview, e.g. if it's displayed modally or embedded, has titlebar and co
   :versionadded-android: 3.5.0
   :versionadded-ios: 3.5.0
   :versionadded-web-player: 3.5.0
+  :versionadded-web-kiosk: 3.7.0
 
   Get the controls configuration for the current webview.
 
@@ -207,13 +223,12 @@ Metadata / information about the app and issue can be accessed through this java
       }
   }
 
-|
-
 .. versioned-toggle-box:: getMetadata
   :color: blue
   :versionadded-android: 2.4.0
   :versionadded-ios: 2.6.0
   :versionadded-web-player: 2.6.0
+  :versionadded-web-kiosk: 3.7.0
 
   This method returns the value for a given key. The value will be provided via the `callback` method.
 
@@ -227,6 +242,8 @@ Metadata / information about the app and issue can be accessed through this java
     :versionadded-ios: 2.4.0
     :versionadded-composer: 3.1.0
     :versionchanged: 2.6.0 now globally available in all web views
+    :versionadded-web-player: 2.6.0
+    :versionadded-web-kiosk: 3.7.0
 
     The id of the app in the Purple Manager.
 
@@ -320,8 +337,12 @@ Metadata / information about the app and issue can be accessed through this java
     :versionadded-android: 2.6.0
     :versionadded-ios: 2.6.0
     :versionadded-composer: 3.1.0
+    :versionadded-web-player: 2.6.0
+    :versionadded-web-kiosk: 3.7.0
 
-    The platform (``android``, ``kindle``, ``ios`` or ``macOS``) on which this app is running on.
+    The platform (``android``, ``kindle``, ``ios``, ``web` or ``macOS``) on which this app is running on.
+
+    |
 
     **Available contexts**
 
@@ -336,6 +357,8 @@ Metadata / information about the app and issue can be accessed through this java
     :versionadded-android: 2.6.0
     :versionadded-ios: 2.6.0
     :versionadded-composer: 3.1.0
+    :versionadded-web-player: 2.6.0
+    :versionadded-web-kiosk: 3.7.0
 
     The current locale of the system.
 
@@ -350,6 +373,8 @@ Metadata / information about the app and issue can be accessed through this java
     :color: blue
     :versionadded-android: 2.6.0
     :versionadded-ios: 2.6.0
+    :versionadded-web-player: 2.6.0
+    :versionadded-web-kiosk: 3.7.0
 
     The base url for communicating with the delivery service of the Purple Manager.
 
@@ -380,6 +405,10 @@ Metadata / information about the app and issue can be accessed through this java
     :versionadded-android: 2.4.0
     :versionadded-ios: 2.4.0
     :versionchanged: 2.6.0 now globally available in all web views
+    :versionadded-web-player: 2.6.0
+    :versionadded-web-kiosk: 3.7.0
+
+    |
 
     The entitlement username of the user if he is logged in.
 
@@ -395,6 +424,8 @@ Metadata / information about the app and issue can be accessed through this java
     :versionadded-android: 2.4.0
     :versionadded-ios: 2.4.0
     :versionchanged: 2.6.0 now globally available in all web views
+    :versionadded-web-player: 2.6.0
+    :versionadded-web-kiosk: 3.7.0
 
     The entitlement access token of the user if he is logged in.
 
@@ -436,6 +467,7 @@ Metadata / information about the app and issue can be accessed through this java
     :versionadded-android: 2.4.0
     :versionadded-ios: 2.4.0
     :versionadded-composer: 3.1.0
+    :versionadded-web-player: 2.6.0
 
     The id of the currently viewed issue.
 
@@ -448,6 +480,7 @@ Metadata / information about the app and issue can be accessed through this java
     :versionadded-android: 2.4.0
     :versionadded-ios: 2.4.0
     :versionadded-composer: 3.1.0
+    :versionadded-web-player: 2.6.0
 
     The name of the currently viewed issue.
 
@@ -462,6 +495,7 @@ Metadata / information about the app and issue can be accessed through this java
     :versionadded-android: 2.4.0
     :versionadded-ios: 2.4.0
     :versionadded-composer: 3.1.0
+    :versionadded-web-player: 2.6.0
 
     The id of the publication of the currently viewed issue.
 
@@ -476,6 +510,7 @@ Metadata / information about the app and issue can be accessed through this java
     :versionadded-android: 2.4.0
     :versionadded-ios: 2.4.0
     :versionadded-composer: 3.1.0
+    :versionadded-web-player: 2.6.0
 
     The name of the publication of the currently viewed issue.
 
@@ -490,6 +525,7 @@ Metadata / information about the app and issue can be accessed through this java
     :versionadded-android: 2.4.0
     :versionadded-ios: 2.4.0
     :versionadded-composer: 3.1.0
+    :versionadded-web-player: 2.6.0
 
     The id of the currently viewed content page.
 
@@ -515,6 +551,7 @@ Metadata / information about the app and issue can be accessed through this java
     :versionadded-android: 2.4.0
     :versionadded-ios: 2.4.0
     :versionadded-composer: 3.1.0
+    :versionadded-web-player: 2.6.0
 
     The title of the currently viewed content page.
 
@@ -527,6 +564,7 @@ Metadata / information about the app and issue can be accessed through this java
     :versionadded-android: 2.4.0
     :versionadded-ios: 2.4.0
     :versionadded-composer: 3.1.0
+    :versionadded-web-player: 2.6.0
 
     The index of the currently viewed content page.
 
@@ -539,6 +577,7 @@ Metadata / information about the app and issue can be accessed through this java
     :versionadded-android: 2.4.0
     :versionadded-ios: 2.4.0
     :versionadded-composer: 3.1.0
+    :versionadded-web-player: 2.6.0
 
     The filename of the current page (not the webview page, but the storytelling content page)
 
@@ -551,7 +590,7 @@ Storefront
 
 Web content can access storefront data through a javascript interface.
 
-.. note:: This interface is not available in Web Kiosk and Composer Native Preview.
+.. note:: This interface is not available in Composer Native Preview.
 
 .. code-block:: javascript
   :caption: Storefront JavaScript-Interface
@@ -678,6 +717,7 @@ Web content can access storefront data through a javascript interface.
 .. versioned-toggle-box:: getPublications
   :versionadded-android: 3.4.0
   :versionadded-ios: 3.4.0
+  :versionadded-web-kiosk: 3.7.0
   :color: purple
 
   This method lists all publications in the storefront.
@@ -709,6 +749,7 @@ Web content can access storefront data through a javascript interface.
 .. versioned-toggle-box:: getIssues
   :versionadded-android: 3.4.0
   :versionadded-ios: 3.4.0
+  :versionadded-web-kiosk: 3.7.0
   :color: purple
 
   This method needs to be called to obtain a list of issues for a specific publication.
@@ -753,6 +794,7 @@ Web content can access storefront data through a javascript interface.
 .. versioned-toggle-box:: getIssueStates
   :versionadded-android: 3.4.0
   :versionadded-ios: 3.4.0
+  :versionadded-web-kiosk: 3.7.0
   :color: purple
 
   To obtain the state of specific issues this method can be used.
@@ -765,7 +807,7 @@ Web content can access storefront data through a javascript interface.
 
     {
       "issueId": "aabbcc",
-      "state": "<state>"
+      "state": "<STATE>"
     }
 
   The following table describes the possible issue states.
@@ -831,7 +873,7 @@ Web content can access storefront data through a javascript interface.
   |
 
   .. code-block:: javascript
-    :caption: Issue state model (with progress)
+    :caption: Issue state model (with progress, for possible states see getIssueStates)
 
     {
       "issueId": "aabbcc",
@@ -850,6 +892,7 @@ Web content can access storefront data through a javascript interface.
 .. versioned-toggle-box:: updateStorefront
   :versionadded-android: 3.4.0
   :versionadded-ios: 3.4.0
+  :versionadded-web-kiosk: 3.7.0
   :color: purple
 
   This method starts a synchronization of the storefront with the Purple Manager. The result of this process will then be called on the given callback function.
@@ -1209,6 +1252,7 @@ It can only store string values.
   :versionadded-android: 3.3.0
   :versionadded-ios: 3.3.0
   :versionadded-web-player: 3.1.4
+  :versionadded-web-kiosk: 3.7.0
   :versionadded-composer: 3.1.0
   :color: blue
 
@@ -1224,6 +1268,7 @@ It can only store string values.
   :versionadded-android: 3.3.0
   :versionadded-ios: 3.3.0
   :versionadded-web-player: 3.1.4
+  :versionadded-web-kiosk: 3.7.0
   :versionadded-composer: 3.1.0
   :color: blue
 
@@ -1238,14 +1283,14 @@ It can only store string values.
 
 Web Player specifics
 ********************
-Due to WebViews being implemented using iframes in Web Player, JavaScript
+Due to WebViews being implemented using iframes in Web Player and Web Newsstand, JavaScript
 injection works different in this context.
 
 The global purple object can be made available by including :code:`purpleInterface.js`
 in the embedded page. An interface for the Purple Object is
 re-implemented in the child page. When a function of the purple object is
-called, a HTML5 PostMessage will be sent to the parent window (Web Player).
-This will invoke the actual call on the Purple Object. The Web Player will then
+called, a HTML5 PostMessage will be sent to the parent window (Web Player / Web Newsstand).
+This will invoke the actual call on the Purple Object. The Web Player / Web Newsstand will then
 respond with another HTML 5 PostMessage which the child window (iframe) will
 process.
 

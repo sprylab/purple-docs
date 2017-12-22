@@ -10,7 +10,7 @@ Deep Links
 
   For internal use the link starts with :code:`purple: //` and for external starts with :code:`purple-<PACKAGE_NAME>://`.
 
-  The :code:`<PACKAGE_NAME>` of the app can be found on the app overview page in the Purple DS Manager.
+  The package name of the app can be found on the app overview page in the Purple DS Manager.
 
   The :code:`<PACKAGE_NAME>` in the deep link has to be used in lower case even though the app's actual package name can contain capital letters.
 
@@ -825,15 +825,15 @@ Kiosk
   .. role:: fg-red
 
   +------------------------+-----------------+
-  | Parameter              | Optional        |
+  | Query-Parameter        | Optional        |
   +========================+=================+
-  | LOGIN_NAME             | :fg-red:`NO`    |
+  | login_name             | :fg-green:`YES` |
   +------------------------+-----------------+
-  | ACCESS_TOKEN           | :fg-red:`NO`    |
+  | token                  | :fg-red:`NO`    |
   +------------------------+-----------------+
-  | ROLES                  | :fg-red:`NO`    |
+  | roles                  | :fg-red:`NO`    |
   +------------------------+-----------------+
-  | URL_ENCODED_ACTION_URL | :fg-red:`NO`    |
+  | success_url            | :fg-green:`YES` |
   +------------------------+-----------------+
 
   |
@@ -882,9 +882,9 @@ Kiosk
   .. role:: fg-red
 
   +------------------------+-----------------+
-  | Parameter              | Optional        |
+  | Query-Parameter        | Optional        |
   +========================+=================+
-  | URL_ENCODED_ACTION_URL | :fg-red:`NO`    |
+  | success_url            | :fg-green:`YES` |
   +------------------------+-----------------+
 
   |

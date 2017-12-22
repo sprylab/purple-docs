@@ -1,14 +1,14 @@
-######
-Appboy
-######
+#####
+Braze
+#####
 
 .. versionadded:: 2.1.0
 
-|Appboy| is a tracking service which supports tracking events (actions / purchases) and storing attributes.
+|Braze| (formerly known as Appboy) is a tracking service which supports tracking events (actions / purchases) and storing attributes.
 
-.. |Appboy| raw:: html
+.. |Braze| raw:: html
 
-   <a href="https://www.appboy.com/" target="_blank">Appboy</a>
+   <a href="https://www.braze.com/" target="_blank">Braze</a>
 
 Events
 ######
@@ -24,31 +24,34 @@ Overview
 |                       |                        |                       |                        |                       |
 +-----------------------+------------------------+-----------------------+------------------------+-----------------------+
 
+
+.. note:: Due to compatibility with older versions we keep the previous name as the identifier in the config.
+
 Actions
 *******
 
-Appboy supports tracking of action events. The actual value sent to Appboy is configured through template with the key :code:`action`.
+Braze supports tracking of action events. The actual value sent to Braze is configured through template with the key :code:`action`.
 
 Views
 *****
 
-Appboy does not support view events.
+Braze does not support view events.
 
 Purchases
 *********
 
-Appboy supports tracking of purchase events. Purchase events cannot be configured (besides enabling/disabling the whole event) and
+Braze supports tracking of purchase events. Purchase events cannot be configured (besides enabling/disabling the whole event) and
 always the track the product id, currency code and price.
 
 Attributes
 **********
 
-Appboy supports storing attributes per user. The name of the attribute can be configured through the :code:`name` template.
+Braze supports storing attributes per user. The name of the attribute can be configured through the :code:`name` template.
 
 Event parameters
 ****************
 
-Appboy does not support sending custom parameters.
+Braze does not support sending custom parameters.
 
 Configuration Example
 #####################

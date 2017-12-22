@@ -247,7 +247,7 @@ Role-Filters
 ============
 
 Starting with version 2.6.0 app menu entries can be filtered by user roles. This is done by adding an ``access`` attribute to the ``navigationNode``.
-A complete list of roles and access expressions can be found in the :ref:`roles <entitlement-user-roles>` section.
+A complete list of roles and access expressions can be found below.
 If the ``access`` attribute is not set, then it defaults to the ``permitAll`` expression.
 
 .. toggle-box:: Example Login and logout based on roles
@@ -325,6 +325,39 @@ If the ``access`` attribute is not set, then it defaults to the ``permitAll`` ex
             </navigationNode>
         </navigation>
     </app_menu>
+
+User Roles
+==========
+
+New in version 2.6.0.
+
+Users that log in through the app can have roles assigned to them. These roles can then be used to e.g. filter specific app menu entries.
+For the specific configuration of such app menu entries see the :ref:`app menu configuration <dyn-res-app-menu-roles>`
+
+Currently there are the following predefined roles:
+
++-----------------+---------------------------------------------------------------+
+| Role            | Description                                                   |
++=================+===============================================================+
+| ROLE_ANONYMOUS  | The default role that any user has, that is not logged in yet |
++-----------------+---------------------------------------------------------------+
+| AUTHENTICATED   | Every user that is logged in gets this role                   |
++-----------------+---------------------------------------------------------------+
+
+To check whether a user has certain roles one of the following expressions can be used:
+
++---------------------------------------+--------------------------------------------------------------------------------+
+| Expression                            | Description                                                                    |
++=======================================+================================================================================+
+| permitAll                             | allows any role, always returns true                                           |
++---------------------------------------+--------------------------------------------------------------------------------+
+| hasRole('role_a,role_b,role_c')       | returns true if the user owns all listed roles                                 |
++---------------------------------------+--------------------------------------------------------------------------------+
+| hasAnyRole('role_a,role_b,role_c')    | returns true if the user owns at least one of the listed roles                 |
++---------------------------------------+--------------------------------------------------------------------------------+
+| role_a,role_b,role_c                  | same as hasAnyRole, returns true if at least one role matches the user's roles |
++---------------------------------------+--------------------------------------------------------------------------------+
+
 
 HTML-Contents
 *************
@@ -989,7 +1022,7 @@ At last the configuration for the individual tutorial screens happens. The ``vie
 Tracking
 ********
 
-The tracking is configured by editing ``tracking_config.json``. For further details about configuring tracking see: :doc:`Tracking </features/tracking>`
+The tracking is configured by editing ``tracking_config.json``. For further details about configuring tracking see: :doc:`Tracking </tracking>`
 
 .. _dynamic-resources-sharing:
 
@@ -1009,6 +1042,9 @@ The purpose of this file is to set an app url and texts that will be printed dur
 
     app.plaintext=Hallo, ich möchte Dir die App empfehlen
     issue.plaintext=Hallo, folgende Ausgabe möchte ich dir empfehlen. Hier kannst Du dir die App herunterladen: http://www.example.com
+
+
+.. hint:: This file must be encoded as ISO 8859-1.
 
 .. _dyn-res-feedback-mail:
 
