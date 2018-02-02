@@ -2,14 +2,6 @@
 Entitlement server connection
 #############################
 
-.. toctree::
-        :maxdepth: 1
-        :hidden:
-
-        entitlement_types/standard_v1
-        entitlement_types/standard_v2
-        entitlement_types/dps_v1
-
 Overview
 ########
 
@@ -96,3 +88,12 @@ Web newsstand configuration
 To use entitlement in a web newsstand, it is to be configured in the basic settings of the app, provided a web newsstand is configured at all.
 This setting can be changed at any time.
 
+Available entitlement interfaces
+################################
+
+.. toctree::
+    :maxdepth: 1
+
+    entitlement_types/standard_v1
+    entitlement_types/standard_v2
+    entitlement_types/dps_v1
