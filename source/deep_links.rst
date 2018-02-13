@@ -354,6 +354,7 @@ App
   :color: blue
   :versionadded-android: 2.7.0
   :versionadded-ios: 2.7.0
+  :versionadded-web-kiosk: 3.5.0
 
   Opens a pre-filled email for feedback as configured in the :ref:`dynamic resources <dyn-res-feedback-mail>`.
 
@@ -556,6 +557,47 @@ App
   **URL**
 
   purple://app/home/open
+
+  |
+
+  **Usable Contexts**
+
+  .. role:: fg-green
+  .. role:: fg-red
+
+  +---------------------------+-----------------+
+  | Context                   | Usable          |
+  +===========================+=================+
+  | App menu                  | :fg-green:`YES` |
+  +---------------------------+-----------------+
+  | Kiosk promotion area      | :fg-green:`YES` |
+  +---------------------------+-----------------+
+  | Storytelling content      | :fg-green:`YES` |
+  +---------------------------+-----------------+
+  | Purple webview            | :fg-green:`YES` |
+  +---------------------------+-----------------+
+  | Push notification Manager | :fg-red:`NO`    |
+  +---------------------------+-----------------+
+  | Push notification Braze   | :fg-green:`YES` |
+  +---------------------------+-----------------+
+  | In-App Messages Braze     | :fg-green:`YES` |
+  +---------------------------+-----------------+
+
+.. versioned-toggle-box:: Register push service
+  :color: blue
+  :versionadded-ios: 3.8.0
+
+  .. warning::
+
+    This action url is not supported on Android.
+
+  Triggers the push registration for the application. This will display a system dialog asking for permission to receive push notifications.
+
+  |
+
+  **URL**
+
+  purple://app/push/register
 
   |
 

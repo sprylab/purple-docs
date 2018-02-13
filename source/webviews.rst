@@ -276,6 +276,8 @@ Metadata / information about the app and issue can be accessed through this java
     :versionadded-android: 2.6.0
     :versionadded-ios: 2.6.0
     :versionadded-composer: 3.1.0
+    :versionadded-web-player: 2.6.0
+    :versionadded-web-kiosk: 3.7.0
 
     Boolean value indicating if the app is a preview or release app.
 
@@ -322,6 +324,8 @@ Metadata / information about the app and issue can be accessed through this java
     :versionadded-android: 2.6.0
     :versionadded-ios: 2.6.0
     :versionadded-composer: 3.1.0
+    :versionadded-web-player: 2.6.0
+    :versionadded-web-kiosk: 3.7.0
 
     The os version of the device.
 
