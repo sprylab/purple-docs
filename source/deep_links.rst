@@ -61,9 +61,9 @@ App
   +---------------------------+-----------------+
   | Push notification Manager | :fg-red:`NO`    |
   +---------------------------+-----------------+
-  | Push notification Appboy  | :fg-green:`YES` |
+  | Push notification Braze   | :fg-green:`YES` |
   +---------------------------+-----------------+
-  | In-App Messages Appboy    | :fg-green:`YES` |
+  | In-App Messages Braze     | :fg-green:`YES` |
   +---------------------------+-----------------+
 
 .. raw:: pdf
@@ -106,9 +106,9 @@ App
   +---------------------------+-----------------+
   | Push notification Manager | :fg-red:`NO`    |
   +---------------------------+-----------------+
-  | Push notification Appboy  | :fg-green:`YES` |
+  | Push notification Braze   | :fg-green:`YES` |
   +---------------------------+-----------------+
-  | In-App Messages Appboy    | :fg-green:`YES` |
+  | In-App Messages Braze     | :fg-green:`YES` |
   +---------------------------+-----------------+
 
 .. versioned-toggle-box:: Open app menu
@@ -144,9 +144,9 @@ App
   +---------------------------+-----------------+
   | Push notification Manager | :fg-red:`NO`    |
   +---------------------------+-----------------+
-  | Push notification Appboy  | :fg-red:`NO`    |
+  | Push notification Braze   | :fg-red:`NO`    |
   +---------------------------+-----------------+
-  | In-App Messages Appboy    | :fg-red:`NO`    |
+  | In-App Messages Braze     | :fg-red:`NO`    |
   +---------------------------+-----------------+
 
 .. versioned-toggle-box:: Close app menu
@@ -182,9 +182,9 @@ App
   +---------------------------+-----------------+
   | Push notification Manager | :fg-red:`NO`    |
   +---------------------------+-----------------+
-  | Push notification Appboy  | :fg-red:`NO`    |
+  | Push notification Braze   | :fg-red:`NO`    |
   +---------------------------+-----------------+
-  | In-App Messages Appboy    | :fg-red:`NO`    |
+  | In-App Messages Braze     | :fg-red:`NO`    |
   +---------------------------+-----------------+
 
 .. versioned-toggle-box:: Toggle app menu
@@ -220,9 +220,9 @@ App
   +---------------------------+-----------------+
   | Push notification Manager | :fg-red:`NO`    |
   +---------------------------+-----------------+
-  | Push notification Appboy  | :fg-red:`NO`    |
+  | Push notification Braze   | :fg-red:`NO`    |
   +---------------------------+-----------------+
-  | In-App Messages Appboy    | :fg-red:`NO`    |
+  | In-App Messages Braze     | :fg-red:`NO`    |
   +---------------------------+-----------------+
 
 .. raw:: pdf
@@ -262,9 +262,9 @@ App
   +---------------------------+-----------------+
   | Push notification Manager | :fg-red:`NO`    |
   +---------------------------+-----------------+
-  | Push notification Appboy  | :fg-green:`YES` |
+  | Push notification Braze   | :fg-green:`YES` |
   +---------------------------+-----------------+
-  | In-App Messages Appboy    | :fg-green:`YES` |
+  | In-App Messages Braze     | :fg-green:`YES` |
   +---------------------------+-----------------+
 
 .. versioned-toggle-box:: Open composer connect
@@ -300,9 +300,9 @@ App
   +---------------------------+-----------------+
   | Push notification Manager | :fg-red:`NO`    |
   +---------------------------+-----------------+
-  | Push notification Appboy  | :fg-green:`YES` |
+  | Push notification Braze   | :fg-green:`YES` |
   +---------------------------+-----------------+
-  | In-App Messages Appboy    | :fg-green:`YES` |
+  | In-App Messages Braze     | :fg-green:`YES` |
   +---------------------------+-----------------+
 
 .. raw:: pdf
@@ -345,9 +345,9 @@ App
   +---------------------------+-----------------+
   | Push notification Manager | :fg-red:`NO`    |
   +---------------------------+-----------------+
-  | Push notification Appboy  | :fg-green:`YES` |
+  | Push notification Braze   | :fg-green:`YES` |
   +---------------------------+-----------------+
-  | In-App Messages Appboy    | :fg-green:`YES` |
+  | In-App Messages Braze     | :fg-green:`YES` |
   +---------------------------+-----------------+
 
 .. versioned-toggle-box:: Open feedback mail
@@ -383,9 +383,9 @@ App
   +---------------------------+-----------------+
   | Push notification Manager | :fg-red:`NO`    |
   +---------------------------+-----------------+
-  | Push notification Appboy  | :fg-green:`YES` |
+  | Push notification Braze   | :fg-green:`YES` |
   +---------------------------+-----------------+
-  | In-App Messages Appboy    | :fg-green:`YES` |
+  | In-App Messages Braze     | :fg-green:`YES` |
   +---------------------------+-----------------+
 
 .. raw:: pdf
@@ -448,9 +448,9 @@ App
   +---------------------------+-----------------+
   | Push notification Manager | :fg-red:`NO`    |
   +---------------------------+-----------------+
-  | Push notification Appboy  | :fg-green:`YES` |
+  | Push notification Braze   | :fg-green:`YES` |
   +---------------------------+-----------------+
-  | In-App Messages Appboy    | :fg-green:`YES` |
+  | In-App Messages Braze     | :fg-green:`YES` |
   +---------------------------+-----------------+
 
 .. raw:: pdf
@@ -491,9 +491,9 @@ App
   +---------------------------+-----------------+
   | Push notification Manager | :fg-red:`NO`    |
   +---------------------------+-----------------+
-  | Push notification Appboy  | :fg-green:`YES` |
+  | Push notification Braze   | :fg-green:`YES` |
   +---------------------------+-----------------+
-  | In-App Messages Appboy    | :fg-green:`YES` |
+  | In-App Messages Braze     | :fg-green:`YES` |
   +---------------------------+-----------------+
 
 .. versioned-toggle-box:: Share app or issue or page
@@ -532,9 +532,9 @@ App
   +---------------------------+-----------------+
   | Push notification Manager | :fg-red:`NO`    |
   +---------------------------+-----------------+
-  | Push notification Appboy  | :fg-green:`YES` |
+  | Push notification Braze   | :fg-green:`YES` |
   +---------------------------+-----------------+
-  | In-App Messages Appboy    | :fg-green:`YES` |
+  | In-App Messages Braze     | :fg-green:`YES` |
   +---------------------------+-----------------+
 
 .. raw:: pdf
@@ -577,9 +577,9 @@ App
   +---------------------------+-----------------+
   | Push notification Manager | :fg-red:`NO`    |
   +---------------------------+-----------------+
-  | Push notification Appboy  | :fg-green:`YES` |
+  | Push notification Braze   | :fg-green:`YES` |
   +---------------------------+-----------------+
-  | In-App Messages Appboy    | :fg-green:`YES` |
+  | In-App Messages Braze     | :fg-green:`YES` |
   +---------------------------+-----------------+
 
 .. raw:: pdf
@@ -623,9 +623,9 @@ Kiosk
   +---------------------------+-----------------+
   | Push notification Manager | :fg-red:`NO`    |
   +---------------------------+-----------------+
-  | Push notification Appboy  | :fg-green:`YES` |
+  | Push notification Braze   | :fg-green:`YES` |
   +---------------------------+-----------------+
-  | In-App Messages Appboy    | :fg-green:`YES` |
+  | In-App Messages Braze     | :fg-green:`YES` |
   +---------------------------+-----------------+
 
 .. versioned-toggle-box:: Open channel (newsfeed)
@@ -661,9 +661,9 @@ Kiosk
   +---------------------------+-----------------+
   | Push notification Manager | :fg-red:`NO`    |
   +---------------------------+-----------------+
-  | Push notification Appboy  | :fg-green:`YES` |
+  | Push notification Braze   | :fg-green:`YES` |
   +---------------------------+-----------------+
-  | In-App Messages Appboy    | :fg-green:`YES` |
+  | In-App Messages Braze     | :fg-green:`YES` |
   +---------------------------+-----------------+
 
 .. raw:: pdf
@@ -705,9 +705,9 @@ Kiosk
   +---------------------------+-----------------+
   | Push notification Manager | :fg-red:`NO`    |
   +---------------------------+-----------------+
-  | Push notification Appboy  | :fg-green:`YES` |
+  | Push notification Braze   | :fg-green:`YES` |
   +---------------------------+-----------------+
-  | In-App Messages Appboy    | :fg-green:`YES` |
+  | In-App Messages Braze     | :fg-green:`YES` |
   +---------------------------+-----------------+
 
 .. versioned-toggle-box:: Show issue preview
@@ -755,9 +755,9 @@ Kiosk
   +---------------------------+-----------------+
   | Push notification Manager | :fg-red:`NO`    |
   +---------------------------+-----------------+
-  | Push notification Appboy  | :fg-green:`YES` |
+  | Push notification Braze   | :fg-green:`YES` |
   +---------------------------+-----------------+
-  | In-App Messages Appboy    | :fg-green:`YES` |
+  | In-App Messages Braze     | :fg-green:`YES` |
   +---------------------------+-----------------+
 
 .. raw:: pdf
@@ -798,9 +798,9 @@ Kiosk
   +---------------------------+-----------------+
   | Push notification Manager | :fg-red:`NO`    |
   +---------------------------+-----------------+
-  | Push notification Appboy  | :fg-green:`YES` |
+  | Push notification Braze   | :fg-green:`YES` |
   +---------------------------+-----------------+
-  | In-App Messages Appboy    | :fg-green:`YES` |
+  | In-App Messages Braze     | :fg-green:`YES` |
   +---------------------------+-----------------+
 
 .. raw:: pdf
@@ -856,9 +856,9 @@ Kiosk
   +---------------------------+-----------------+
   | Push notification Manager | :fg-red:`NO`    |
   +---------------------------+-----------------+
-  | Push notification Appboy  | :fg-green:`YES` |
+  | Push notification Braze   | :fg-green:`YES` |
   +---------------------------+-----------------+
-  | In-App Messages Appboy    | :fg-green:`YES` |
+  | In-App Messages Braze     | :fg-green:`YES` |
   +---------------------------+-----------------+
 
 .. raw:: pdf
@@ -907,9 +907,9 @@ Kiosk
   +---------------------------+-----------------+
   | Push notification Manager | :fg-red:`NO`    |
   +---------------------------+-----------------+
-  | Push notification Appboy  | :fg-green:`YES` |
+  | Push notification Braze   | :fg-green:`YES` |
   +---------------------------+-----------------+
-  | In-App Messages Appboy    | :fg-green:`YES` |
+  | In-App Messages Braze     | :fg-green:`YES` |
   +---------------------------+-----------------+
 
 .. raw:: pdf
@@ -951,9 +951,9 @@ Kiosk
   +---------------------------+-----------------+
   | Push notification Manager | :fg-red:`NO`    |
   +---------------------------+-----------------+
-  | Push notification Appboy  | :fg-green:`YES` |
+  | Push notification Braze   | :fg-green:`YES` |
   +---------------------------+-----------------+
-  | In-App Messages Appboy    | :fg-green:`YES` |
+  | In-App Messages Braze     | :fg-green:`YES` |
   +---------------------------+-----------------+
 
 .. versioned-toggle-box:: Start In-App purchase
@@ -997,9 +997,9 @@ Kiosk
   +---------------------------+-------------------------------------------+
   | Push notification Manager | :fg-red:`NO`                              |
   +---------------------------+-------------------------------------------+
-  | Push notification Appboy  | :fg-green:`YES`                           |
+  | Push notification Braze   | :fg-green:`YES`                           |
   +---------------------------+-------------------------------------------+
-  | In-App Messages Appboy    | :fg-green:`YES`                           |
+  | In-App Messages Braze     | :fg-green:`YES`                           |
   +---------------------------+-------------------------------------------+
 
 .. raw:: pdf
@@ -1042,9 +1042,9 @@ Kiosk
   +---------------------------+-----------------+
   | Push notification Manager | :fg-red:`NO`    |
   +---------------------------+-----------------+
-  | Push notification Appboy  | :fg-green:`YES` |
+  | Push notification Braze   | :fg-green:`YES` |
   +---------------------------+-----------------+
-  | In-App Messages Appboy    | :fg-green:`YES` |
+  | In-App Messages Braze     | :fg-green:`YES` |
   +---------------------------+-----------------+
 
 .. raw:: pdf
@@ -1193,9 +1193,9 @@ Kiosk
   +---------------------------+-----------------+
   | Push notification Manager | :fg-red:`NO`    |
   +---------------------------+-----------------+
-  | Push notification Appboy  | :fg-green:`YES` |
+  | Push notification Braze   | :fg-green:`YES` |
   +---------------------------+-----------------+
-  | In-App Messages Appboy    | :fg-green:`YES` |
+  | In-App Messages Braze     | :fg-green:`YES` |
   +---------------------------+-----------------+
 
 .. raw:: pdf
@@ -1257,9 +1257,9 @@ Kiosk
   +---------------------------+-----------------+
   | Push notification Manager | :fg-red:`NO`    |
   +---------------------------+-----------------+
-  | Push notification Appboy  | :fg-green:`YES` |
+  | Push notification Braze   | :fg-green:`YES` |
   +---------------------------+-----------------+
-  | In-App Messages Appboy    | :fg-green:`YES` |
+  | In-App Messages Braze     | :fg-green:`YES` |
   +---------------------------+-----------------+
 
 .. raw:: pdf
@@ -1302,9 +1302,9 @@ Kiosk
   +---------------------------+-----------------+
   | Push notification Manager | :fg-red:`NO`    |
   +---------------------------+-----------------+
-  | Push notification Appboy  | :fg-green:`YES` |
+  | Push notification Braze   | :fg-green:`YES` |
   +---------------------------+-----------------+
-  | In-App Messages Appboy    | :fg-green:`YES` |
+  | In-App Messages Braze     | :fg-green:`YES` |
   +---------------------------+-----------------+
 
 .. raw:: pdf
@@ -1348,9 +1348,9 @@ Content
   +---------------------------+-----------------+
   | Push notification Manager | :fg-red:`NO`    |
   +---------------------------+-----------------+
-  | Push notification Appboy  | :fg-red:`NO`    |
+  | Push notification Braze   | :fg-red:`NO`    |
   +---------------------------+-----------------+
-  | In-App Messages Appboy    | :fg-red:`NO`    |
+  | In-App Messages Braze     | :fg-red:`NO`    |
   +---------------------------+-----------------+
 
 .. versioned-toggle-box:: Navigate inside an issue via alias
@@ -1395,9 +1395,9 @@ Content
   +---------------------------+-----------------+
   | Push notification Manager | :fg-red:`NO`    |
   +---------------------------+-----------------+
-  | Push notification Appboy  | :fg-red:`NO`    |
+  | Push notification Braze   | :fg-red:`NO`    |
   +---------------------------+-----------------+
-  | In-App Messages Appboy    | :fg-red:`NO`    |
+  | In-App Messages Braze     | :fg-red:`NO`    |
   +---------------------------+-----------------+
 
 .. raw:: pdf
@@ -1446,9 +1446,9 @@ Content
   +---------------------------+-----------------+
   | Push notification Manager | :fg-red:`NO`    |
   +---------------------------+-----------------+
-  | Push notification Appboy  | :fg-red:`NO`    |
+  | Push notification Braze   | :fg-red:`NO`    |
   +---------------------------+-----------------+
-  | In-App Messages Appboy    | :fg-red:`NO`    |
+  | In-App Messages Braze     | :fg-red:`NO`    |
   +---------------------------+-----------------+
 
 .. versioned-toggle-box:: Share content page
@@ -1492,9 +1492,9 @@ Content
   +---------------------------+-----------------+
   | Push notification Manager | :fg-red:`NO`    |
   +---------------------------+-----------------+
-  | Push notification Appboy  | :fg-red:`NO`    |
+  | Push notification Braze   | :fg-red:`NO`    |
   +---------------------------+-----------------+
-  | In-App Messages Appboy    | :fg-red:`NO`    |
+  | In-App Messages Braze     | :fg-red:`NO`    |
   +---------------------------+-----------------+
 
 .. raw:: pdf
@@ -1536,9 +1536,9 @@ Content
   +---------------------------+-----------------+
   | Push notification Manager | :fg-red:`NO`    |
   +---------------------------+-----------------+
-  | Push notification Appboy  | :fg-red:`NO`    |
+  | Push notification Braze   | :fg-red:`NO`    |
   +---------------------------+-----------------+
-  | In-App Messages Appboy    | :fg-red:`NO`    |
+  | In-App Messages Braze     | :fg-red:`NO`    |
   +---------------------------+-----------------+
 
 |
@@ -1556,7 +1556,7 @@ Old action urls
   | Title                                 | Action url                                                                              | Version Android  | Version iOS      | Version Web                   |
   +=======================================+=========================================================================================+==================+==================+===============================+
   | Open app information                  | pkapp://action/openAppInformation                                                       | - 1.6.0          | 2.1.0            | not supported                 |
-  |                                       |                                                                                         | - 2.1.0 (Appboy) |                  |                               |
+  |                                       |                                                                                         | - 2.1.0 (Braze)  |                  |                               |
   +---------------------------------------+-----------------------------------------------------------------------------------------+------------------+------------------+-------------------------------+
   | Open app settings                     | pkapp://action/openSettings                                                             | 2.1.0            | n/a              | not supported                 |
   +---------------------------------------+-----------------------------------------------------------------------------------------+------------------+------------------+-------------------------------+
@@ -1573,24 +1573,24 @@ Old action urls
   | Share app or issue or page            | purple://app/share_app_or_issue_or_content                                              | 2.2.0            | 2.7.0            | not supported                 |
   +---------------------------------------+-----------------------------------------------------------------------------------------+------------------+------------------+-------------------------------+
   | Open kiosk (newsstand)                | pkapp://action/openKiosk                                                                | - 1.6.x          | - 1.x            | not supported                 |
-  |                                       |                                                                                         | - 2.1.0 (AppBoy) | - 2.1.0 (Appboy) |                               |
+  |                                       |                                                                                         | - 2.1.0 (Braze)  | - 2.1.0 (Braze)  |                               |
   +---------------------------------------+-----------------------------------------------------------------------------------------+------------------+------------------+-------------------------------+
   | Open channel (newsfeed)               | pkapp://action/openChannelFeed                                                          | 2.2.x            | 2.1.0            | not supported                 |
   +---------------------------------------+-----------------------------------------------------------------------------------------+------------------+------------------+-------------------------------+
   | Open category chooser                 | pkapp://action/changeKioskCategory                                                      | 2.1.0            | 2.3.3            | not supported                 |
   +---------------------------------------+-----------------------------------------------------------------------------------------+------------------+------------------+-------------------------------+
   | Show issue preview                    | pkapp://action/openIssueDetailByID/``<ISSUE_ID>``                                       | - 1.6.x          | 2.7.0            | not supported                 |
-  |                                       |                                                                                         | - 2.1.0 (AppBoy) |                  |                               |
+  |                                       |                                                                                         | - 2.1.0 (Braze)  |                  |                               |
   +---------------------------------------+-----------------------------------------------------------------------------------------+------------------+------------------+-------------------------------+
   | Open subscription administration view | pkapp://action/openSubscriptions                                                        | - 1.6.x          | - 1.x            | not supported                 |
-  |                                       |                                                                                         | - 2.1.0 (AppBoy) | - 2.1.0 (Appboy) |                               |
+  |                                       |                                                                                         | - 2.1.0 (Braze)  | - 2.1.0 (Braze)  |                               |
   +---------------------------------------+-----------------------------------------------------------------------------------------+------------------+------------------+-------------------------------+
   | Start In-App purchase                 | pkapp://action/purchase/``<PRODUCT_ID>``                                                | 2.1.0            | 2.1.0            | not supported                 |
   +---------------------------------------+-----------------------------------------------------------------------------------------+------------------+------------------+-------------------------------+
   | Restore purchases                     | pkapp://action/restorePurchases                                                         | not supported    | 1.x              | not supported                 |
   +---------------------------------------+-----------------------------------------------------------------------------------------+------------------+------------------+-------------------------------+
   | Open issue                            | pkapp://action/openIssueByID/``<ISSUE_ID>``                                             | - 1.6.x          | - 2.7.0          | not supported                 |
-  |                                       |                                                                                         | - 2.1.0 (AppBoy) | - 2.1.0 (Appboy) |                               |
+  |                                       |                                                                                         | - 2.1.0 (Braze)  | - 2.1.0 (Braze)  |                               |
   +---------------------------------------+-----------------------------------------------------------------------------------------+------------------+------------------+-------------------------------+
   | ( Open current issue )                | pkapp://action/presentCurrentIssue                                                      | 2.1.0            | 2.1.0            | not supported                 |
   +---------------------------------------+-----------------------------------------------------------------------------------------+------------------+------------------+-------------------------------+
@@ -1721,9 +1721,9 @@ Standard Protocols
   +---------------------------+-----------------+
   | Push notification Manager | :fg-red:`NO`    |
   +---------------------------+-----------------+
-  | Push notification Appboy  | :fg-green:`YES` |
+  | Push notification Braze   | :fg-green:`YES` |
   +---------------------------+-----------------+
-  | In-App Messages Appboy    | :fg-green:`YES` |
+  | In-App Messages Braze     | :fg-green:`YES` |
   +---------------------------+-----------------+
 
 .. versioned-toggle-box:: Tel
@@ -1760,7 +1760,7 @@ Standard Protocols
   +---------------------------+-----------------+
   | Push notification Manager | :fg-red:`NO`    |
   +---------------------------+-----------------+
-  | Push notification Appboy  | :fg-green:`YES` |
+  | Push notification Braze   | :fg-green:`YES` |
   +---------------------------+-----------------+
-  | In-App Messages Appboy    | :fg-green:`YES` |
+  | In-App Messages Braze     | :fg-green:`YES` |
   +---------------------------+-----------------+
