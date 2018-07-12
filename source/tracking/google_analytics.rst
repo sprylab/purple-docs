@@ -21,6 +21,18 @@ For Purple Action-URLs you just have to append your campaign parameters to the U
 
    <a href="https://support.google.com/analytics/answer/1033863?hl=en" target="_blank">official documentation</a>
 
+IP anonymization
+################
+
+Anonymization of IPs has been enabled for App Template 3.9 and above since 30.05.2018.
+
+See the |GoogleAnalyticsAndroidIPAnonymization| for more information about how the anonymization
+is done.
+
+.. |GoogleAnalyticsAndroidIPAnonymization| raw:: html
+
+   <a href="https://developers.google.com/analytics/devguides/collection/android/v4/advanced#anonymizeIp" target="_blank">official documentation</a>
+
 Events
 ######
 

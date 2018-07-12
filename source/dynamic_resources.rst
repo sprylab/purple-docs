@@ -9,7 +9,7 @@ Overview
 ########
 
 The dynamic resources are some files that can change some configuration (e.g. `App Menu`_, `Channels`_, `Tracking`_, ...) without submitting an app update.
-The app checks for updated dynamic resources on every app start.
+The app checks for updated dynamic resources on every app start and resume.
 
 Structure
 #########
@@ -29,8 +29,53 @@ The minimal setup of the dynamic resources requires a ``default`` folder which c
 Localization
 ************
 
-It is possible to add translations by adding folders such as ``de``, ``en`` or ``de_DE``, ``en_US`` next to the ``default`` folder. Depending on the devices system language the app loads the configuration files from these folders.
+It is possible to add translations by adding folders such as ``de``, ``en`` or ``de_DE``, ``en_US`` next to the ``default`` folder.
+Depending on the device's preferred languages the app loads the best fitting configuration files from these folders.
+Starting with Android 7.0 the system supports multiple preferred languages just like iOS. On earlier Android versions only the device's system language is used.
+The look-up happens in the following way:
+
+For each of the system's preferred language check if there is a folder that
+
+1. matches the exact locale (e.g. ``de_DE`` or ``en_US``)
+
+2. matches the exact language (e.g. use ``en`` folder for ``en_US``)
+
+3. uses the same language but different region (e.g. use ``en_UK`` folder for ``en_US``)
+
 In the case that there is no matching folder, the configuration falls back to the contents of the ``default`` folder.
+
+.. toggle-box:: Example: Resource resolution
+
+  Dynamic resources:
+
+  ::
+
+    /
+    ├── default/
+    ├── de_DE/
+    └── it_IT/
+
+  |
+
+  Preferred languages:
+
+  1. fr_CH
+
+  2. it_CH
+
+  Resolution:
+
+  1. check exact locale (fr_CH) -> no match
+
+  2. check exact language (fr) -> no match
+
+  3. check same language but different region (fr) -> no match
+
+  4. check exact locale (it_CH) -> no match
+
+  5. check exact language (it) -> no match
+
+  6. check same language but different region (it) -> it_IT
 
 .. toggle-box:: Example: Different sharing settings
 
@@ -50,7 +95,7 @@ In the case that there is no matching folder, the configuration falls back to th
 Platform-specific Configuration
 *******************************
 
-Additionally to translations it is also possible to add platform-specific configurations. This is done by adding some platform folders such as ``android``, ``ios`` or ``kindle``. The structure of these folders is the same as mentioned above.
+Additionally to translations it is also possible to add platform-specific configurations. This is done by adding some platform folders such as ``android``, ``ios``, ``kindle`` or ``web``. The structure of these folders is the same as mentioned above.
 
 .. toggle-box:: Example: Platform-specific structure
 
@@ -65,6 +110,13 @@ Additionally to translations it is also possible to add platform-specific config
     │   └── de/
     │       └── app_menu.xml
     ├── ios/
+    │   ├── default/
+    │   │   └── app_menu.xml
+    │   ├── en/
+    │   │   └── app_menu.xml
+    │   └── de/
+    │       └── app_menu.xml
+    ├── web/
     │   ├── default/
     │   │   └── app_menu.xml
     │   ├── en/
@@ -117,6 +169,24 @@ Additionally to translations it is also possible to add platform-specific config
        ├── channel_configs.json (default)
        └── sharing.properties (default)
 
+.. toggle-box:: Result on web
+
+  ::
+
+    /
+    ├── default/
+    │   ├── app_menu.xml (web-default)
+    │   ├── channel_configs.json (default)
+    │   └── sharing.properties (default)
+    ├── en/
+    │   ├── app_menu.xml (web-en)
+    │   ├── channel_configs.json (default)
+    │   └── sharing.properties (default)
+    └── de/
+       ├── app_menu.xml (web-de)
+       ├── channel_configs.json (default)
+       └── sharing.properties (default)
+
 If two folders contain the same file, then the more specific file overwrites the more generic one. E.g. some file in ``default`` gets overwritten by the same file from ``android``.
 
 Configuration
@@ -137,6 +207,11 @@ Navigation-Nodes
 
 The :code:`targetURL` attribute describes the action that will be called when that
 entry is clicked.
+
+.. note::
+
+  Menu entries which are not supported on the web platform will be filtered out and not visible in the app menu in the web newsstand.
+  A warning popup will inform the user about this in the preview version of the web newsstand.
 
 Navigation Header / Footer
 ==========================
@@ -201,13 +276,15 @@ Example
 Translations
 ============
 
-Its also possible to set translations in the app menu, so that there is no need to make specific folders. This can be done by adding multiple ``title`` nodes with ``locale`` attributes as shown in the following example.
+As of release 3.11 it is now also possible to set translations in the app menu, so that there is no need to make specific folders. This can be done by adding multiple ``title`` nodes with ``locale`` attributes as shown in the following example.
+The resolution strategy is the same as the one for the localization folders in the dynamic resources. For further details on the resolution strategy see Localization_.
 
 .. toggle-box:: Translated entries
 
   .. code-block:: xml
 
     <navigationNode targetURL="http://google.com">
+        <title>default Title</title>
         <title locale="de">German Title</title>
         <title locale="en">English Title</title>
     </navigationNode>
