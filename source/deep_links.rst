@@ -48,23 +48,23 @@ App
   .. role:: fg-green
   .. role:: fg-red
 
-  +---------------------------+-----------------+
-  | Context                   | Usable          |
-  +===========================+=================+
-  | App menu                  | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Kiosk promotion area      | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Storytelling content      | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Purple webview            | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Push notification Manager | :fg-red:`NO`    |
-  +---------------------------+-----------------+
-  | Push notification Braze   | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | In-App Messages Braze     | :fg-green:`YES` |
-  +---------------------------+-----------------+
+  +---------------------------------------+-----------------+
+  | Context                               | Usable          |
+  +=======================================+=================+
+  | App menu                              | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Kiosk promotion area                  | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Storytelling content                  | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Purple webview                        | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Push notification Manager             | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
+  | Push notifications Braze / Pinpoint   | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | In-App Messages Braze                 | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
 
 .. raw:: pdf
 
@@ -73,12 +73,15 @@ App
 .. versioned-toggle-box:: Open app settings
   :color: blue
   :versionadded-android: 2.7.0
-
-  .. warning::
-
-      This action url is not supported on iOS. Settings are available within device settings app.
+  :versionadded-iOS: 3.10.0
 
   Opens the app settings view. In this view it is possible to adjust the settings for the app, e.g. toggle tracking services.
+
+  |
+
+  .. hint::
+
+    On iOS this will open the device settings app.
 
   |
 
@@ -93,28 +96,29 @@ App
   .. role:: fg-green
   .. role:: fg-red
 
-  +---------------------------+-----------------+
-  | Context                   | Usable          |
-  +===========================+=================+
-  | App menu                  | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Kiosk promotion area      | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Storytelling content      | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Purple webview            | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Push notification Manager | :fg-red:`NO`    |
-  +---------------------------+-----------------+
-  | Push notification Braze   | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | In-App Messages Braze     | :fg-green:`YES` |
-  +---------------------------+-----------------+
+  +---------------------------------------+-----------------+
+  | Context                               | Usable          |
+  +=======================================+=================+
+  | App menu                              | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Kiosk promotion area                  | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Storytelling content                  | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Purple webview                        | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Push notification Manager             | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
+  | Push notifications Braze / Pinpoint   | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | In-App Messages Braze                 | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
 
 .. versioned-toggle-box:: Open app menu
   :color: blue
   :versionadded-android: 2.3.3
   :versionadded-iOS: 2.3.3
+  :versionadded-web-kiosk: 3.10.0
 
   Opens the app menu. The menu remains open, if it is already open.
 
@@ -131,28 +135,29 @@ App
   .. role:: fg-green
   .. role:: fg-red
 
-  +---------------------------+-----------------+
-  | Context                   | Usable          |
-  +===========================+=================+
-  | App menu                  | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Kiosk promotion area      | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Storytelling content      | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Purple webview            | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Push notification Manager | :fg-red:`NO`    |
-  +---------------------------+-----------------+
-  | Push notification Braze   | :fg-red:`NO`    |
-  +---------------------------+-----------------+
-  | In-App Messages Braze     | :fg-red:`NO`    |
-  +---------------------------+-----------------+
+  +---------------------------------------+-----------------+
+  | Context                               | Usable          |
+  +=======================================+=================+
+  | App menu                              | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Kiosk promotion area                  | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Storytelling content                  | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Purple webview                        | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Push notification Manager             | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
+  | Push notifications Braze / Pinpoint   | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
+  | In-App Messages Braze                 | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
 
 .. versioned-toggle-box:: Close app menu
   :color: blue
   :versionadded-android: 2.3.3
   :versionadded-iOS: 2.3.3
+  :versionadded-web-kiosk: 3.10.0
 
   Closes the app menu. The menu remains closed, if it is already closed.
 
@@ -169,28 +174,29 @@ App
   .. role:: fg-green
   .. role:: fg-red
 
-  +---------------------------+-----------------+
-  | Context                   | Usable          |
-  +===========================+=================+
-  | App menu                  | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Kiosk promotion area      | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Storytelling content      | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Purple webview            | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Push notification Manager | :fg-red:`NO`    |
-  +---------------------------+-----------------+
-  | Push notification Braze   | :fg-red:`NO`    |
-  +---------------------------+-----------------+
-  | In-App Messages Braze     | :fg-red:`NO`    |
-  +---------------------------+-----------------+
+  +---------------------------------------+-----------------+
+  | Context                               | Usable          |
+  +=======================================+=================+
+  | App menu                              | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Kiosk promotion area                  | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Storytelling content                  | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Purple webview                        | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Push notification Manager             | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
+  | Push notifications Braze / Pinpoint   | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
+  | In-App Messages Braze                 | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
 
 .. versioned-toggle-box:: Toggle app menu
   :color: blue
   :versionadded-android: 2.3.3
   :versionadded-ios: 2.3.3
+  :versionadded-web-kiosk: 3.10.0
 
   Closes the app menu, if it was opened and opens the app menu if it was closed.
 
@@ -207,23 +213,23 @@ App
   .. role:: fg-green
   .. role:: fg-red
 
-  +---------------------------+-----------------+
-  | Context                   | Usable          |
-  +===========================+=================+
-  | App menu                  | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Kiosk promotion area      | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Storytelling content      | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Purple webview            | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Push notification Manager | :fg-red:`NO`    |
-  +---------------------------+-----------------+
-  | Push notification Braze   | :fg-red:`NO`    |
-  +---------------------------+-----------------+
-  | In-App Messages Braze     | :fg-red:`NO`    |
-  +---------------------------+-----------------+
+  +---------------------------------------+-----------------+
+  | Context                               | Usable          |
+  +=======================================+=================+
+  | App menu                              | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Kiosk promotion area                  | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Storytelling content                  | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Purple webview                        | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Push notification Manager             | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
+  | Push notifications Braze / Pinpoint   | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
+  | In-App Messages Braze                 | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
 
 .. raw:: pdf
 
@@ -249,23 +255,23 @@ App
   .. role:: fg-green
   .. role:: fg-red
 
-  +---------------------------+-----------------+
-  | Context                   | Usable          |
-  +===========================+=================+
-  | App menu                  | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Kiosk promotion area      | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Storytelling content      | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Purple webview            | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Push notification Manager | :fg-red:`NO`    |
-  +---------------------------+-----------------+
-  | Push notification Braze   | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | In-App Messages Braze     | :fg-green:`YES` |
-  +---------------------------+-----------------+
+  +---------------------------------------+-----------------+
+  | Context                               | Usable          |
+  +=======================================+=================+
+  | App menu                              | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Kiosk promotion area                  | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Storytelling content                  | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Purple webview                        | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Push notification Manager             | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
+  | Push notifications Braze / Pinpoint   | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | In-App Messages Braze                 | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
 
 .. versioned-toggle-box:: Open composer connect
   :color: blue
@@ -287,23 +293,23 @@ App
   .. role:: fg-green
   .. role:: fg-red
 
-  +---------------------------+-----------------+
-  | Context                   | Usable          |
-  +===========================+=================+
-  | App menu                  | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Kiosk promotion area      | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Storytelling content      | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Purple webview            | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Push notification Manager | :fg-red:`NO`    |
-  +---------------------------+-----------------+
-  | Push notification Braze   | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | In-App Messages Braze     | :fg-green:`YES` |
-  +---------------------------+-----------------+
+  +---------------------------------------+-----------------+
+  | Context                               | Usable          |
+  +=======================================+=================+
+  | App menu                              | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Kiosk promotion area                  | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Storytelling content                  | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Purple webview                        | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Push notification Manager             | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
+  | Push notifications Braze / Pinpoint   | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | In-App Messages Braze                 | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
 
 .. raw:: pdf
 
@@ -332,23 +338,23 @@ App
   .. role:: fg-green
   .. role:: fg-red
 
-  +---------------------------+-----------------+
-  | Context                   | Usable          |
-  +===========================+=================+
-  | App menu                  | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Kiosk promotion area      | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Storytelling content      | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Purple webview            | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Push notification Manager | :fg-red:`NO`    |
-  +---------------------------+-----------------+
-  | Push notification Braze   | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | In-App Messages Braze     | :fg-green:`YES` |
-  +---------------------------+-----------------+
+  +---------------------------------------+-----------------+
+  | Context                               | Usable          |
+  +=======================================+=================+
+  | App menu                              | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Kiosk promotion area                  | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Storytelling content                  | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Purple webview                        | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Push notification Manager             | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
+  | Push notifications Braze / Pinpoint   | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | In-App Messages Braze                 | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
 
 .. versioned-toggle-box:: Open feedback mail
   :color: blue
@@ -371,23 +377,23 @@ App
   .. role:: fg-green
   .. role:: fg-red
 
-  +---------------------------+-----------------+
-  | Context                   | Usable          |
-  +===========================+=================+
-  | App menu                  | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Kiosk promotion area      | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Storytelling content      | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Purple webview            | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Push notification Manager | :fg-red:`NO`    |
-  +---------------------------+-----------------+
-  | Push notification Braze   | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | In-App Messages Braze     | :fg-green:`YES` |
-  +---------------------------+-----------------+
+  +---------------------------------------+-----------------+
+  | Context                               | Usable          |
+  +=======================================+=================+
+  | App menu                              | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Kiosk promotion area                  | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Storytelling content                  | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Purple webview                        | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Push notification Manager             | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
+  | Push notifications Braze / Pinpoint   | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | In-App Messages Braze                 | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
 
 .. raw:: pdf
 
@@ -397,6 +403,8 @@ App
   :color: blue
   :versionadded-android: 2.1.0
   :versionadded-ios: 2.1.0
+  :versionadded-web-kiosk: 3.10.0
+  :versionchanged: 3.10.0 added :code:`force_status_bar` query parameter, 3.11.0 added :code:`app_logo` query parameter
 
   Opens an html file from :doc:`dynamic resources </dynamic_resources>`.
 
@@ -406,7 +414,7 @@ App
 
   purple://app/resource/dynamic/:code:`<PATH>`
 
-  purple://app/resource/dynamic/:code:`<PATH>`?display_mode= :code:`<VALUE>` &title_bar= :code:`<VALUE>` &controls= :code:`<VALUE>`
+  purple://app/resource/dynamic/:code:`<PATH>`?display_mode= :code:`<VALUE>` &title_bar= :code:`<VALUE>` &controls= :code:`<VALUE>` &force_status_bar= :code:`<VALUE>` &app_logo= :code:`<VALUE>`
 
   .. role:: fg-red
 
@@ -416,18 +424,29 @@ App
   | PATH                   | :fg-red:`NO`    |
   +------------------------+-----------------+
 
-  +------------------------+-----------------+--------------------------------------------------+
-  | Query-Parameter        | Optional        | Values                                           |
-  +========================+=================+==================================================+
-  | display_mode           | :fg-green:`YES` | - :code:`embedded` app menu available (default)  |
-  |                        |                 | - :code:`modal` no app menu available            |
-  +------------------------+-----------------+--------------------------------------------------+
-  | title_bar              | :fg-green:`YES` | - :code:`true` show title bar (default)          |
-  |                        |                 | - :code:`false` no title bar                     |
-  +------------------------+-----------------+--------------------------------------------------+
-  | controls               | :fg-green:`YES` | - :code:`true` show navigation controls          |
-  |                        |                 | - :code:`false` no navigation controls (default) |
-  +------------------------+-----------------+--------------------------------------------------+
+  +------------------------+-----------------+-----------------------------------------------------------+
+  | Query-Parameter        | Optional        | Values                                                    |
+  +========================+=================+===========================================================+
+  | display_mode           | :fg-green:`YES` | - :code:`embedded` app menu available (default)           |
+  |                        |                 | - :code:`modal` no app menu available                     |
+  +------------------------+-----------------+-----------------------------------------------------------+
+  | title_bar              | :fg-green:`YES` | - :code:`true` show title bar (default)                   |
+  |                        |                 | - :code:`false` no title bar                              |
+  +------------------------+-----------------+-----------------------------------------------------------+
+  | controls               | :fg-green:`YES` | - :code:`true` show navigation controls                   |
+  |                        |                 | - :code:`false` no navigation controls (default)          |
+  +------------------------+-----------------+-----------------------------------------------------------+
+  | force_status_bar       | :fg-green:`YES` | - :code:`true` show status bar                            |
+  |                        |                 | - :code:`false` no status bar (default)                   |
+  +------------------------+-----------------+-----------------------------------------------------------+
+  | app_logo               | :fg-green:`YES` | - :code:`true` show app logo in title bar instead of text |
+  |                        |                 | - :code:`false` no app logo (default)                     |
+  +------------------------+-----------------+-----------------------------------------------------------+
+
+  .. hint::
+
+    | The :code:`force_status_bar` parameter is ignored if the :code:`title_bar` parameter is :code:`true`. The title bar is always presented with a status bar.
+    | The :code:`app_logo` parameter is ignored if the :code:`title_bar` parameter is :code:`false`. The app logo can only be shown if a title bar is shown.
 
   |
 
@@ -436,23 +455,23 @@ App
   .. role:: fg-green
   .. role:: fg-red
 
-  +---------------------------+-----------------+
-  | Context                   | Usable          |
-  +===========================+=================+
-  | App menu                  | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Kiosk promotion area      | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Storytelling content      | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Purple webview            | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Push notification Manager | :fg-red:`NO`    |
-  +---------------------------+-----------------+
-  | Push notification Braze   | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | In-App Messages Braze     | :fg-green:`YES` |
-  +---------------------------+-----------------+
+  +---------------------------------------+-----------------+
+  | Context                               | Usable          |
+  +=======================================+=================+
+  | App menu                              | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Kiosk promotion area                  | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Storytelling content                  | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Purple webview                        | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Push notification Manager             | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
+  | Push notifications Braze / Pinpoint   | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | In-App Messages Braze                 | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
 
 .. raw:: pdf
 
@@ -479,23 +498,23 @@ App
   .. role:: fg-green
   .. role:: fg-red
 
-  +---------------------------+-----------------+
-  | Context                   | Usable          |
-  +===========================+=================+
-  | App menu                  | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Kiosk promotion area      | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Storytelling content      | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Purple webview            | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Push notification Manager | :fg-red:`NO`    |
-  +---------------------------+-----------------+
-  | Push notification Braze   | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | In-App Messages Braze     | :fg-green:`YES` |
-  +---------------------------+-----------------+
+  +---------------------------------------+-----------------+
+  | Context                               | Usable          |
+  +=======================================+=================+
+  | App menu                              | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Kiosk promotion area                  | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Storytelling content                  | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Purple webview                        | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Push notification Manager             | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
+  | Push notifications Braze / Pinpoint   | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | In-App Messages Braze                 | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
 
 .. versioned-toggle-box:: Share app or issue or page
   :color: blue
@@ -520,23 +539,23 @@ App
   .. role:: fg-green
   .. role:: fg-red
 
-  +---------------------------+-----------------+
-  | Context                   | Usable          |
-  +===========================+=================+
-  | App menu                  | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Kiosk promotion area      | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Storytelling content      | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Purple webview            | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Push notification Manager | :fg-red:`NO`    |
-  +---------------------------+-----------------+
-  | Push notification Braze   | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | In-App Messages Braze     | :fg-green:`YES` |
-  +---------------------------+-----------------+
+  +---------------------------------------+-----------------+
+  | Context                               | Usable          |
+  +=======================================+=================+
+  | App menu                              | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Kiosk promotion area                  | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Storytelling content                  | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Purple webview                        | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Push notification Manager             | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
+  | Push notifications Braze / Pinpoint   | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | In-App Messages Braze                 | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
 
 .. raw:: pdf
 
@@ -565,23 +584,23 @@ App
   .. role:: fg-green
   .. role:: fg-red
 
-  +---------------------------+-----------------+
-  | Context                   | Usable          |
-  +===========================+=================+
-  | App menu                  | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Kiosk promotion area      | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Storytelling content      | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Purple webview            | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Push notification Manager | :fg-red:`NO`    |
-  +---------------------------+-----------------+
-  | Push notification Braze   | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | In-App Messages Braze     | :fg-green:`YES` |
-  +---------------------------+-----------------+
+  +---------------------------------------+-----------------+
+  | Context                               | Usable          |
+  +=======================================+=================+
+  | App menu                              | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Kiosk promotion area                  | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Storytelling content                  | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Purple webview                        | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Push notification Manager             | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
+  | Push notifications Braze / Pinpoint   | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | In-App Messages Braze                 | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
 
 .. versioned-toggle-box:: Register push service
   :color: blue
@@ -606,23 +625,102 @@ App
   .. role:: fg-green
   .. role:: fg-red
 
-  +---------------------------+-----------------+
-  | Context                   | Usable          |
-  +===========================+=================+
-  | App menu                  | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Kiosk promotion area      | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Storytelling content      | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Purple webview            | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Push notification Manager | :fg-red:`NO`    |
-  +---------------------------+-----------------+
-  | Push notification Braze   | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | In-App Messages Braze     | :fg-green:`YES` |
-  +---------------------------+-----------------+
+  +---------------------------------------+-----------------+
+  | Context                               | Usable          |
+  +=======================================+=================+
+  | App menu                              | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Kiosk promotion area                  | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Storytelling content                  | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Purple webview                        | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Push notification Manager             | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
+  | Push notifications Braze / Pinpoint   | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | In-App Messages Braze                 | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+
+.. versioned-toggle-box:: Open external URL
+  :color: blue
+  :versionadded-android: 3.9.0
+  :versionadded-ios: 3.9.0
+  :versionadded-web-kiosk: 3.9.0
+
+  Open the given URL by handing it over to the underlying OS.
+  The URL has to be URL-encoded.
+
+  |
+
+  **URL**
+
+  purple://app/open/external/url/:code:`URLEncodedURL`
+
+  |
+
+  **Usable Contexts**
+
+  .. role:: fg-green
+  .. role:: fg-red
+
+  +---------------------------------------+-----------------+
+  | Context                               | Usable          |
+  +=======================================+=================+
+  | App menu                              | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Kiosk promotion area                  | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Storytelling content                  | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Purple webview                        | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Push notification Manager             | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
+  | Push notifications Braze / Pinpoint   | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | In-App Messages Braze                 | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+
+.. versioned-toggle-box:: Open HTML onboarding
+  :color: blue
+  :versionadded-android: 3.10.1
+  :versionadded-ios: 3.10.1
+
+  Open HTML onboarding screen which is shown on first app start.
+  This only works if HTML onboarding is enabled.
+
+  |
+
+  **URL**
+
+  purple://app/onboarding/app_start/open
+
+  |
+
+  **Usable Contexts**
+
+  .. role:: fg-green
+  .. role:: fg-red
+
+  +---------------------------------------+-----------------+
+  | Context                               | Usable          |
+  +=======================================+=================+
+  | App menu                              | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Kiosk promotion area                  | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Storytelling content                  | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Purple webview                        | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Push notification Manager             | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
+  | Push notifications Braze / Pinpoint   | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | In-App Messages Braze                 | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
 
 .. raw:: pdf
 
@@ -652,23 +750,23 @@ Kiosk
   .. role:: fg-green
   .. role:: fg-red
 
-  +---------------------------+-----------------+
-  | Context                   | Usable          |
-  +===========================+=================+
-  | App menu                  | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Kiosk promotion area      | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Storytelling content      | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Purple webview            | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Push notification Manager | :fg-red:`NO`    |
-  +---------------------------+-----------------+
-  | Push notification Braze   | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | In-App Messages Braze     | :fg-green:`YES` |
-  +---------------------------+-----------------+
+  +---------------------------------------+-----------------+
+  | Context                               | Usable          |
+  +=======================================+=================+
+  | App menu                              | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Kiosk promotion area                  | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Storytelling content                  | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Purple webview                        | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Push notification Manager             | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
+  | Push notifications Braze / Pinpoint   | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | In-App Messages Braze                 | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
 
 .. versioned-toggle-box:: Open channel (newsfeed)
   :color: purple
@@ -690,23 +788,23 @@ Kiosk
   .. role:: fg-green
   .. role:: fg-red
 
-  +---------------------------+-----------------+
-  | Context                   | Usable          |
-  +===========================+=================+
-  | App menu                  | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Kiosk promotion area      | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Storytelling content      | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Purple webview            | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Push notification Manager | :fg-red:`NO`    |
-  +---------------------------+-----------------+
-  | Push notification Braze   | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | In-App Messages Braze     | :fg-green:`YES` |
-  +---------------------------+-----------------+
+  +---------------------------------------+-----------------+
+  | Context                               | Usable          |
+  +=======================================+=================+
+  | App menu                              | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Kiosk promotion area                  | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Storytelling content                  | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Purple webview                        | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Push notification Manager             | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
+  | Push notifications Braze / Pinpoint   | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | In-App Messages Braze                 | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
 
 .. raw:: pdf
 
@@ -734,23 +832,23 @@ Kiosk
   .. role:: fg-green
   .. role:: fg-red
 
-  +---------------------------+-----------------+
-  | Context                   | Usable          |
-  +===========================+=================+
-  | App menu                  | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Kiosk promotion area      | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Storytelling content      | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Purple webview            | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Push notification Manager | :fg-red:`NO`    |
-  +---------------------------+-----------------+
-  | Push notification Braze   | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | In-App Messages Braze     | :fg-green:`YES` |
-  +---------------------------+-----------------+
+  +---------------------------------------+-----------------+
+  | Context                               | Usable          |
+  +=======================================+=================+
+  | App menu                              | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Kiosk promotion area                  | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Storytelling content                  | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Purple webview                        | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Push notification Manager             | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
+  | Push notifications Braze / Pinpoint   | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | In-App Messages Braze                 | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
 
 .. versioned-toggle-box:: Show issue preview
   :color: purple
@@ -784,23 +882,23 @@ Kiosk
   .. role:: fg-green
   .. role:: fg-red
 
-  +---------------------------+-----------------+
-  | Context                   | Usable          |
-  +===========================+=================+
-  | App menu                  | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Kiosk promotion area      | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Storytelling content      | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Purple webview            | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Push notification Manager | :fg-red:`NO`    |
-  +---------------------------+-----------------+
-  | Push notification Braze   | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | In-App Messages Braze     | :fg-green:`YES` |
-  +---------------------------+-----------------+
+  +---------------------------------------+-----------------+
+  | Context                               | Usable          |
+  +=======================================+=================+
+  | App menu                              | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Kiosk promotion area                  | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Storytelling content                  | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Purple webview                        | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Push notification Manager             | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
+  | Push notifications Braze / Pinpoint   | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | In-App Messages Braze                 | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
 
 .. raw:: pdf
 
@@ -827,23 +925,23 @@ Kiosk
   .. role:: fg-green
   .. role:: fg-red
 
-  +---------------------------+-----------------+
-  | Context                   | Usable          |
-  +===========================+=================+
-  | App menu                  | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Kiosk promotion area      | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Storytelling content      | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Purple webview            | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Push notification Manager | :fg-red:`NO`    |
-  +---------------------------+-----------------+
-  | Push notification Braze   | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | In-App Messages Braze     | :fg-green:`YES` |
-  +---------------------------+-----------------+
+  +---------------------------------------+-----------------+
+  | Context                               | Usable          |
+  +=======================================+=================+
+  | App menu                              | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Kiosk promotion area                  | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Storytelling content                  | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Purple webview                        | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Push notification Manager             | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
+  | Push notifications Braze / Pinpoint   | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | In-App Messages Braze                 | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
 
 .. raw:: pdf
 
@@ -885,23 +983,23 @@ Kiosk
   .. role:: fg-green
   .. role:: fg-red
 
-  +---------------------------+-----------------+
-  | Context                   | Usable          |
-  +===========================+=================+
-  | App menu                  | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Kiosk promotion area      | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Storytelling content      | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Purple webview            | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Push notification Manager | :fg-red:`NO`    |
-  +---------------------------+-----------------+
-  | Push notification Braze   | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | In-App Messages Braze     | :fg-green:`YES` |
-  +---------------------------+-----------------+
+  +---------------------------------------+-----------------+
+  | Context                               | Usable          |
+  +=======================================+=================+
+  | App menu                              | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Kiosk promotion area                  | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Storytelling content                  | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Purple webview                        | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Push notification Manager             | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
+  | Push notifications Braze / Pinpoint   | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | In-App Messages Braze                 | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
 
 .. raw:: pdf
 
@@ -936,23 +1034,23 @@ Kiosk
   .. role:: fg-green
   .. role:: fg-red
 
-  +---------------------------+-----------------+
-  | Context                   | Usable          |
-  +===========================+=================+
-  | App menu                  | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Kiosk promotion area      | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Storytelling content      | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Purple webview            | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Push notification Manager | :fg-red:`NO`    |
-  +---------------------------+-----------------+
-  | Push notification Braze   | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | In-App Messages Braze     | :fg-green:`YES` |
-  +---------------------------+-----------------+
+  +---------------------------------------+-----------------+
+  | Context                               | Usable          |
+  +=======================================+=================+
+  | App menu                              | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Kiosk promotion area                  | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Storytelling content                  | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Purple webview                        | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Push notification Manager             | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
+  | Push notifications Braze / Pinpoint   | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | In-App Messages Braze                 | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
 
 .. raw:: pdf
 
@@ -980,23 +1078,23 @@ Kiosk
   .. role:: fg-green
   .. role:: fg-red
 
-  +---------------------------+-----------------+
-  | Context                   | Usable          |
-  +===========================+=================+
-  | App menu                  | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Kiosk promotion area      | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Storytelling content      | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Purple webview            | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Push notification Manager | :fg-red:`NO`    |
-  +---------------------------+-----------------+
-  | Push notification Braze   | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | In-App Messages Braze     | :fg-green:`YES` |
-  +---------------------------+-----------------+
+  +---------------------------------------+-----------------+
+  | Context                               | Usable          |
+  +=======================================+=================+
+  | App menu                              | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Kiosk promotion area                  | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Storytelling content                  | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Purple webview                        | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Push notification Manager             | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
+  | Push notifications Braze / Pinpoint   | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | In-App Messages Braze                 | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
 
 .. versioned-toggle-box:: Start In-App purchase
   :color: purple
@@ -1026,23 +1124,23 @@ Kiosk
   .. role:: fg-green
   .. role:: fg-red
 
-  +---------------------------+-------------------------------------------+
-  | Context                   | Usable                                    |
-  +===========================+===========================================+
-  | App menu                  | :fg-green:`YES`                           |
-  +---------------------------+-------------------------------------------+
-  | Kiosk promotion area      | :fg-green:`YES`                           |
-  +---------------------------+-------------------------------------------+
-  | Storytelling content      | :fg-red:`NO` Android, :fg-green:`YES` ios |
-  +---------------------------+-------------------------------------------+
-  | Purple webview            | :fg-green:`YES`                           |
-  +---------------------------+-------------------------------------------+
-  | Push notification Manager | :fg-red:`NO`                              |
-  +---------------------------+-------------------------------------------+
-  | Push notification Braze   | :fg-green:`YES`                           |
-  +---------------------------+-------------------------------------------+
-  | In-App Messages Braze     | :fg-green:`YES`                           |
-  +---------------------------+-------------------------------------------+
+  +---------------------------------------+-------------------------------------------+
+  | Context                               | Usable                                    |
+  +=======================================+===========================================+
+  | App menu                              | :fg-green:`YES`                           |
+  +---------------------------------------+-------------------------------------------+
+  | Kiosk promotion area                  | :fg-green:`YES`                           |
+  +---------------------------------------+-------------------------------------------+
+  | Storytelling content                  | :fg-red:`NO` Android, :fg-green:`YES` ios |
+  +---------------------------------------+-------------------------------------------+
+  | Purple webview                        | :fg-green:`YES`                           |
+  +---------------------------------------+-------------------------------------------+
+  | Push notification Manager             | :fg-red:`NO`                              |
+  +---------------------------------------+-------------------------------------------+
+  | Push notifications Braze / Pinpoint   | :fg-green:`YES`                           |
+  +---------------------------------------+-------------------------------------------+
+  | In-App Messages Braze                 | :fg-green:`YES`                           |
+  +---------------------------------------+-------------------------------------------+
 
 .. raw:: pdf
 
@@ -1071,23 +1169,23 @@ Kiosk
   .. role:: fg-green
   .. role:: fg-red
 
-  +---------------------------+-----------------+
-  | Context                   | Usable          |
-  +===========================+=================+
-  | App menu                  | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Kiosk promotion area      | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Storytelling content      | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Purple webview            | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Push notification Manager | :fg-red:`NO`    |
-  +---------------------------+-----------------+
-  | Push notification Braze   | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | In-App Messages Braze     | :fg-green:`YES` |
-  +---------------------------+-----------------+
+  +---------------------------------------+-----------------+
+  | Context                               | Usable          |
+  +=======================================+=================+
+  | App menu                              | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Kiosk promotion area                  | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Storytelling content                  | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Purple webview                        | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Push notification Manager             | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
+  | Push notifications Braze / Pinpoint   | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | In-App Messages Braze                 | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
 
 .. raw:: pdf
 
@@ -1099,10 +1197,10 @@ Kiosk
   :versionadded-ios: 2.7.0
   :versionadded-web-kiosk: 3.2.0
   :versionadded-web-player: 3.0.0
-  :versionchanged: 3.2.0 Add alias, add current page
+  :versionchanged: 3.2.0 Add alias, add current page, 3.11.0 added open by index
 
   Opens an issue via its **issue_id**. If the action url is called with the **page_id** the page of the issue will be opened.
-  It is also possible to provide the **issue_alias** and **page_alias** instead of their respective ids.
+  It is also possible to provide the **issue_alias**, **page_alias** and **page_index** instead of their respective ids.
 
   |
 
@@ -1128,27 +1226,36 @@ Kiosk
 
   purple://kiosk/issue/:code:`<ISSUE>`/page/:code:`<PAGE>`/open
 
-  +-----------------------------+----------------------------+-----------------------------------------------------------------------------------------------+
-  | <ISSUE>                     | <PAGE>                     | Expected result                                                                               |
-  +=============================+============================+===============================================================================================+
-  | :code:`<ISSUE_ID>`          | :code:`<PAGE_ID>`          | Opens the issue on the specified page.                                                        |
-  +-----------------------------+----------------------------+                                                                                               |
-  | alias/:code:`<ISSUE_ALIAS>` | alias/:code:`<PAGE_ALIAS>` |                                                                                               |
-  +-----------------------------+----------------------------+-----------------------------------------------------------------------------------------------+
-  | current                     | :code:`<PAGE_ID>`          | Opens the specified page of the current issue.                                                |
-  |                             +----------------------------+                                                                                               |
-  | (or issue id or alias       | alias/:code:`<PAGE_ALIAS>` |                                                                                               |
-  | of the current issue)       |                            |                                                                                               |
-  +-----------------------------+----------------------------+-----------------------------------------------------------------------------------------------+
-  | :code:`<ISSUE_ID>`          | current                    | Opens the issue on the first page.                                                            |
-  +-----------------------------+                            |                                                                                               |
-  | alias/:code:`<ISSUE_ALIAS>` |                            |                                                                                               |
-  +-----------------------------+----------------------------+-----------------------------------------------------------------------------------------------+
-  | current                     | current                    | Remains in the current state.                                                                 |
-  |                             |                            |                                                                                               |
-  | (or issue id or alias       | (or page id or alias       |                                                                                               |
-  | of the current issue)       | of the current issue)      |                                                                                               |
-  +-----------------------------+----------------------------+-----------------------------------------------------------------------------------------------+
+  +-----------------------------+-----------------------------+-----------------------------------------------------------------------------------------------+
+  | <ISSUE>                     | <PAGE>                      | Expected result                                                                               |
+  +=============================+=============================+===============================================================================================+
+  | :code:`<ISSUE_ID>`          | :code:`<PAGE_ID>`           | Opens an issue via its issue id on the specified page (page id, page alias or page index).    |
+  |                             +-----------------------------+                                                                                               |
+  |                             | alias/:code:`<PAGE_ALIAS>`  |                                                                                               |
+  |                             +-----------------------------+                                                                                               |
+  |                             | index/:code:`<PAGE_INDEX>`  |                                                                                               |
+  +-----------------------------+-----------------------------+-----------------------------------------------------------------------------------------------+
+  | alias/:code:`<ISSUE_ALIAS>` | :code:`<PAGE_ID>`           | Opens an issue via its alias  on the specified page (page id, page alias or page index).      |
+  |                             +-----------------------------+                                                                                               |
+  |                             | alias/:code:`<PAGE_ALIAS>`  |                                                                                               |
+  |                             +-----------------------------+                                                                                               |
+  |                             | index/:code:`<PAGE_INDEX>`  |                                                                                               |
+  +-----------------------------+-----------------------------+-----------------------------------------------------------------------------------------------+
+  | current                     | :code:`<PAGE_ID>`           | Opens the specified page of the current issue.                                                |
+  |                             +-----------------------------+                                                                                               |
+  | (or issue id or alias       | alias/:code:`<PAGE_ALIAS>`  |                                                                                               |
+  | of the current issue)       +-----------------------------+                                                                                               |
+  |                             | index/:code:`<PAGE_INDEX>`  |                                                                                               |
+  +-----------------------------+-----------------------------+-----------------------------------------------------------------------------------------------+
+  | :code:`<ISSUE_ID>`          | current                     | Opens the issue on the first page.                                                            |
+  +-----------------------------+                             |                                                                                               |
+  | alias/:code:`<ISSUE_ALIAS>` |                             |                                                                                               |
+  +-----------------------------+-----------------------------+-----------------------------------------------------------------------------------------------+
+  | current                     | current                     | Remains in the current state.                                                                 |
+  |                             |                             |                                                                                               |
+  | (or issue id or alias       | (or page id, alias or index |                                                                                               |
+  | of the current issue)       | of the current issue)       |                                                                                               |
+  +-----------------------------+-----------------------------+-----------------------------------------------------------------------------------------------+
 
   |
 
@@ -1222,23 +1329,24 @@ Kiosk
   .. role:: fg-green
   .. role:: fg-red
 
-  +---------------------------+-----------------+
-  | Context                   | Usable          |
-  +===========================+=================+
-  | App menu                  | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Kiosk promotion area      | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Storytelling content      | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Purple webview            | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Push notification Manager | :fg-red:`NO`    |
-  +---------------------------+-----------------+
-  | Push notification Braze   | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | In-App Messages Braze     | :fg-green:`YES` |
-  +---------------------------+-----------------+
+  +---------------------------------------+-----------------+
+  | Context                               | Usable          |
+  +=======================================+=================+
+  | App menu                              | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Kiosk promotion area                  | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Storytelling content                  | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Purple webview                        | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Push notification Manager             | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
+  | Push notifications Braze / Pinpoint   | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | In-App Messages Braze                 | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+
 
 .. raw:: pdf
 
@@ -1286,23 +1394,23 @@ Kiosk
   .. role:: fg-green
   .. role:: fg-red
 
-  +---------------------------+-----------------+
-  | Context                   | Usable          |
-  +===========================+=================+
-  | App menu                  | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Kiosk promotion area      | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Storytelling content      | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Purple Webview            | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Push notification Manager | :fg-red:`NO`    |
-  +---------------------------+-----------------+
-  | Push notification Braze   | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | In-App Messages Braze     | :fg-green:`YES` |
-  +---------------------------+-----------------+
+  +---------------------------------------+-----------------+
+  | Context                               | Usable          |
+  +=======================================+=================+
+  | App menu                              | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Kiosk promotion area                  | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Storytelling content                  | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Purple webview                        | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Push notification Manager             | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
+  | Push notifications Braze / Pinpoint   | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | In-App Messages Braze                 | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
 
 .. raw:: pdf
 
@@ -1331,23 +1439,23 @@ Kiosk
   .. role:: fg-green
   .. role:: fg-red
 
-  +---------------------------+-----------------+
-  | Context                   | Usable          |
-  +===========================+=================+
-  | App menu                  | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Kiosk promotion area      | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Storytelling content      | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Purple webview            | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Push notification Manager | :fg-red:`NO`    |
-  +---------------------------+-----------------+
-  | Push notification Braze   | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | In-App Messages Braze     | :fg-green:`YES` |
-  +---------------------------+-----------------+
+  +---------------------------------------+-----------------+
+  | Context                               | Usable          |
+  +=======================================+=================+
+  | App menu                              | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Kiosk promotion area                  | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Storytelling content                  | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Purple webview                        | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Push notification Manager             | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
+  | Push notifications Braze / Pinpoint   | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | In-App Messages Braze                 | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
 
 .. raw:: pdf
 
@@ -1377,23 +1485,23 @@ Content
   .. role:: fg-green
   .. role:: fg-red
 
-  +---------------------------+-----------------+
-  | Context                   | Usable          |
-  +===========================+=================+
-  | App menu                  | :fg-red:`NO`    |
-  +---------------------------+-----------------+
-  | Kiosk promotion area      | :fg-red:`NO`    |
-  +---------------------------+-----------------+
-  | Storytelling content      | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Purple webview            | :fg-red:`NO`    |
-  +---------------------------+-----------------+
-  | Push notification Manager | :fg-red:`NO`    |
-  +---------------------------+-----------------+
-  | Push notification Braze   | :fg-red:`NO`    |
-  +---------------------------+-----------------+
-  | In-App Messages Braze     | :fg-red:`NO`    |
-  +---------------------------+-----------------+
+  +---------------------------------------+-----------------+
+  | Context                               | Usable          |
+  +=======================================+=================+
+  | App menu                              | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
+  | Kiosk promotion area                  | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
+  | Storytelling content                  | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Purple webview                        | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
+  | Push notification Manager             | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
+  | Push notifications Braze / Pinpoint   | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
+  | In-App Messages Braze                 | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
 
 .. versioned-toggle-box:: Navigate inside an issue via alias
   :color: green
@@ -1424,23 +1532,23 @@ Content
   .. role:: fg-green
   .. role:: fg-red
 
-  +---------------------------+-----------------+
-  | Context                   | Usable          |
-  +===========================+=================+
-  | App menu                  | :fg-red:`NO`    |
-  +---------------------------+-----------------+
-  | Kiosk promotion area      | :fg-red:`NO`    |
-  +---------------------------+-----------------+
-  | Storytelling content      | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Purple webview            | :fg-red:`NO`    |
-  +---------------------------+-----------------+
-  | Push notification Manager | :fg-red:`NO`    |
-  +---------------------------+-----------------+
-  | Push notification Braze   | :fg-red:`NO`    |
-  +---------------------------+-----------------+
-  | In-App Messages Braze     | :fg-red:`NO`    |
-  +---------------------------+-----------------+
+  +---------------------------------------+-----------------+
+  | Context                               | Usable          |
+  +=======================================+=================+
+  | App menu                              | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
+  | Kiosk promotion area                  | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
+  | Storytelling content                  | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Purple webview                        | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
+  | Push notification Manager             | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
+  | Push notifications Braze / Pinpoint   | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
+  | In-App Messages Braze                 | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
 
 .. raw:: pdf
 
@@ -1475,23 +1583,70 @@ Content
   .. role:: fg-green
   .. role:: fg-red
 
-  +---------------------------+-----------------+
-  | Context                   | Usable          |
-  +===========================+=================+
-  | App menu                  | :fg-red:`NO`    |
-  +---------------------------+-----------------+
-  | Kiosk promotion area      | :fg-red:`NO`    |
-  +---------------------------+-----------------+
-  | Storytelling content      | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Purple webview            | :fg-red:`NO`    |
-  +---------------------------+-----------------+
-  | Push notification Manager | :fg-red:`NO`    |
-  +---------------------------+-----------------+
-  | Push notification Braze   | :fg-red:`NO`    |
-  +---------------------------+-----------------+
-  | In-App Messages Braze     | :fg-red:`NO`    |
-  +---------------------------+-----------------+
+  +---------------------------------------+-----------------+
+  | Context                               | Usable          |
+  +=======================================+=================+
+  | App menu                              | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
+  | Kiosk promotion area                  | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
+  | Storytelling content                  | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Purple webview                        | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
+  | Push notification Manager             | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
+  | Push notifications Braze / Pinpoint   | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
+  | In-App Messages Braze                 | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
+
+.. versioned-toggle-box:: Navigate inside an issue via page id
+  :color: green
+  :versionadded-android: 3.11.0
+  :versionadded-ios: 3.11.0
+  :versionadded-web-player: 3.11.0
+
+  Navigates inside an issue to the corresponding page via its **id**.
+
+  |
+
+  **URL**
+
+  purple://content/page/``<PAGE_ID>``/open
+
+  .. role:: fg-red
+
+  +------------------------+-----------------+
+  | Parameter              | Optional        |
+  +========================+=================+
+  | PAGE_ID                | :fg-red:`NO`    |
+  +------------------------+-----------------+
+
+  |
+
+  **Usable Contexts**
+
+  .. role:: fg-green
+  .. role:: fg-red
+
+  +---------------------------------------+-----------------+
+  | Context                               | Usable          |
+  +=======================================+=================+
+  | App menu                              | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
+  | Kiosk promotion area                  | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
+  | Storytelling content                  | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Purple webview                        | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
+  | Push notification Manager             | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
+  | Push notifications Braze / Pinpoint   | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
+  | In-App Messages Braze                 | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
 
 .. versioned-toggle-box:: Share content page
   :color: green
@@ -1521,23 +1676,23 @@ Content
   .. role:: fg-green
   .. role:: fg-red
 
-  +---------------------------+-----------------+
-  | Context                   | Usable          |
-  +===========================+=================+
-  | App menu                  | :fg-red:`NO`    |
-  +---------------------------+-----------------+
-  | Kiosk promotion area      | :fg-red:`NO`    |
-  +---------------------------+-----------------+
-  | Storytelling content      | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Purple webview            | :fg-red:`NO`    |
-  +---------------------------+-----------------+
-  | Push notification Manager | :fg-red:`NO`    |
-  +---------------------------+-----------------+
-  | Push notification Braze   | :fg-red:`NO`    |
-  +---------------------------+-----------------+
-  | In-App Messages Braze     | :fg-red:`NO`    |
-  +---------------------------+-----------------+
+  +---------------------------------------+-----------------+
+  | Context                               | Usable          |
+  +=======================================+=================+
+  | App menu                              | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
+  | Kiosk promotion area                  | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
+  | Storytelling content                  | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Purple webview                        | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
+  | Push notification Manager             | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
+  | Push notifications Braze / Pinpoint   | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
+  | In-App Messages Braze                 | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
 
 .. raw:: pdf
 
@@ -1565,23 +1720,23 @@ Content
   .. role:: fg-green
   .. role:: fg-red
 
-  +---------------------------+-----------------+
-  | Context                   | Usable          |
-  +===========================+=================+
-  | App menu                  | :fg-red:`NO`    |
-  +---------------------------+-----------------+
-  | Kiosk promotion area      | :fg-red:`NO`    |
-  +---------------------------+-----------------+
-  | Storytelling content      | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Purple webview            | :fg-red:`NO`    |
-  +---------------------------+-----------------+
-  | Push notification Manager | :fg-red:`NO`    |
-  +---------------------------+-----------------+
-  | Push notification Braze   | :fg-red:`NO`    |
-  +---------------------------+-----------------+
-  | In-App Messages Braze     | :fg-red:`NO`    |
-  +---------------------------+-----------------+
+  +---------------------------------------+-----------------+
+  | Context                               | Usable          |
+  +=======================================+=================+
+  | App menu                              | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
+  | Kiosk promotion area                  | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
+  | Storytelling content                  | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Purple webview                        | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
+  | Push notification Manager             | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
+  | Push notifications Braze / Pinpoint   | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
+  | In-App Messages Braze                 | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
 
 |
 
@@ -1666,7 +1821,10 @@ only work if :code:`purpleInterface.js` is included in the embedded page.
 When the WebView is loaded, all links with Purple Action URLs as href will be given ActionHandlers, so they can be handled by Web Player.
 
 From V 3.0.0 :code:`purpleInterface.js` is included in the Web Player repository.
-The latest version is also available here: https://composer.purplepublish.com/purple-latest/purpleInterface/purpleInterface.js
+The latest version is delivered via Purple DS | Web Newsstand.
+It is recommended to include the script from one of the following URLs to assure to always use the latest version:
+https://kiosk.purplemanager.com/scripts/purpleInterface.js
+https://kiosk.purplemanager.com/scripts/purpleInterface.min.js
 
 .. note::
 
@@ -1750,23 +1908,23 @@ Standard Protocols
   .. role:: fg-green
   .. role:: fg-red
 
-  +---------------------------+-----------------+
-  | Context                   | Usable          |
-  +===========================+=================+
-  | App menu                  | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Kiosk promotion area      | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Storytelling content      | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Purple webview            | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Push notification Manager | :fg-red:`NO`    |
-  +---------------------------+-----------------+
-  | Push notification Braze   | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | In-App Messages Braze     | :fg-green:`YES` |
-  +---------------------------+-----------------+
+  +---------------------------------------+-----------------+
+  | Context                               | Usable          |
+  +=======================================+=================+
+  | App menu                              | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Kiosk promotion area                  | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Storytelling content                  | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Purple webview                        | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Push notification Manager             | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
+  | Push notifications Braze / Pinpoint   | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | In-App Messages Braze                 | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
 
 .. versioned-toggle-box:: Tel
   :color: blue
@@ -1789,20 +1947,20 @@ Standard Protocols
   .. role:: fg-green
   .. role:: fg-red
 
-  +---------------------------+-----------------+
-  | Context                   | Usable          |
-  +===========================+=================+
-  | App menu                  | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Kiosk promotion area      | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Storytelling content      | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Purple webview            | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | Push notification Manager | :fg-red:`NO`    |
-  +---------------------------+-----------------+
-  | Push notification Braze   | :fg-green:`YES` |
-  +---------------------------+-----------------+
-  | In-App Messages Braze     | :fg-green:`YES` |
-  +---------------------------+-----------------+
+  +---------------------------------------+-----------------+
+  | Context                               | Usable          |
+  +=======================================+=================+
+  | App menu                              | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Kiosk promotion area                  | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Storytelling content                  | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Purple webview                        | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Push notification Manager             | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
+  | Push notifications Braze / Pinpoint   | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | In-App Messages Braze                 | :fg-green:`YES` |
+  +---------------------------------------+-----------------+

@@ -30,6 +30,7 @@ Currently Purple DS apps support several different tracking services.
 - :doc:`Adobe Analytics <tracking/adobe>`
 - :doc:`Braze (Appboy) <tracking/appboy>`
 - :doc:`Facebook <tracking/facebook>`
+- :doc:`Firebase Analytics <tracking/firebase_analytics>`
 - :doc:`Flurry <tracking/flurry>`
 - :doc:`Google Analytics <tracking/google_analytics>`
 - :doc:`IVW <tracking/ivw>`
@@ -43,6 +44,7 @@ Currently Purple DS apps support several different tracking services.
   tracking/adobe
   tracking/appboy
   tracking/facebook
+  tracking/firebase_analytics
   tracking/flurry
   tracking/google_analytics
   tracking/ivw

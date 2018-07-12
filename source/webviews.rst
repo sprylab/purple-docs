@@ -17,12 +17,66 @@ Support for window.print
 Apps support the :code:`window.print` JavaScript-API.
 The standard system print dialog is opened if :code:`window.print` is called.
 
+Support for window.open
+************************
+
+Apps support the :code:`window.open` JavaScript-API. Starting with 3.11 links
+opened via this API will be opened in the internal App Browser (with title bar, status bar and navigation, as a "new window")
+or the same webview, according to the standard browser specifications.
+
+Starting with version 3.10 Action URLs can also be opened via this API on all platforms.
+
 JavaScript-Interfaces
 #####################
 
-Web content can access certain javascript interfaces to get information about
-the app / issue. All javascript interfaces are available after the global
-lifecycle callback function `onPurpleLoad` has been called.
+Using the Purple JavaScript-API
+*******************************
+
+Web content can access special JavaScript-APIs to get information about
+the app / issue and trigger actions.
+
+There are two ways to access the JavaScript-APIs: **automatic** and **manual** inclusion.
+
+Automatic inclusion (deprecated since 3.9)
+==========================================
+
+.. versionchanged:: 3.9.0 Deprecated, replaced with manual inclusion
+
+With automatic inclusion you simply need to have a global :code:`onPurpleLoad`
+function which will get called after the APIs have been made available.
+
+**This however only works on Android and iOS and is not supported in the Web Kiosk.
+This method is therefore considered deprecated since Purple Release 3.9 with the
+support of manual inclusion.**
+
+Manual inclusion
+================
+
+.. versionadded:: 3.9.0
+
+To manually include the JS-APIs html consumers can add any source ending on :code:`scripts/purpleInterface.js` or :code:`scripts/purpleInterface.min.js`
+to their head element.
+The web view intercepts this request and returns the :code:`purpleInterface.js`.
+It is recommended to use the following URL to assure the API works on all platforms
+including web.
+
+.. code-block:: html
+  :linenos:
+  :caption: Example HTML
+
+  <html>
+    <head>
+        <script type="text/javascript" src="https://kiosk.purplemanager.com/scripts/purpleInterface.min.js"></script>
+    </head>
+    <body></body>
+  </html>
+
+.. note:: The old automatic injection mechanism is used as fallback strategy.
+
+When manually embedding the purpleInterface.js source, the use of the :code:`onPurpleLoad` function is not mandatory.
+The purple-Object is available instantly after loading the script.
+
+.. hint:: If the onPurpleLoad function is used anyways, it needs to be defined prior to the above script tag.
 
 .. code-block:: html
   :caption: Example HTML
@@ -35,6 +89,7 @@ lifecycle callback function `onPurpleLoad` has been called.
                 // the global "purple" object is now available
             }
         </script>
+        <script type="text/javascript" src="https://kiosk.purplemanager.com/scripts/purpleInterface.min.js"></script>
     </head>
     <body></body>
   </html>
@@ -74,30 +129,51 @@ This interface is for app-wide information such as the device's connectivity sta
   :caption: App JavaScript-Interface
 
   window.purple = {
-    /**
-     * @public
-     * @static
-     * @namespace AppController
-     */
-    app: {
       /**
-       * Adds a listener for connection state changes.
-       * The listener will be called with a ConnectionState object.
-       * This listener will also be called with the current state right after
-       * calling this method.
+       * @public
+       * @static
+       * @namespace AppController
        */
-      addConnectionStateListener: function (listener) {
-        // Implementation
-      },
-      /**
-       * Removes a listener for connection state changes.
-       */
-      removeConnectionStateListener: function (listener) {
-        // Implementation
+      app: {
+          /**
+           * Adds a listener for connection state changes.
+           * The listener will be called with a ConnectionState object.
+           * This listener will also be called with the current state right after
+           * calling this method.
+           */
+          addConnectionStateListener: function (listener) {
+              // Implementation
+          },
+          /**
+           * Removes a listener for connection state changes.
+           */
+          removeConnectionStateListener: function (listener) {
+              // Implementation
+          },
+          /**
+           * Adds a listener for lifecycle changes.
+           * The listener will be called with a LifecycleEvent object.
+           * This listener will also be called with the current state right after
+           * calling this method.
+           */
+          addLifecycleListener: function (listener) {
+              // Implementation
+          },
+          /**
+           * Removes a listener for lifecycle changes.
+           */
+          removeLifecycleListener: function (listener) {
+              // Implementation
+          },
+          /**
+           * Close the onboarding screen. If true is passed as the first parameter
+           * the onboarding will be shown again on the next app start.
+           */
+          closeOnboarding: function (showAgain) {
+              // Implementation
+          }
       }
-    }
   }
-
 
 .. versioned-toggle-box:: addConnectionStateListener
   :color: blue
@@ -133,6 +209,52 @@ This interface is for app-wide information such as the device's connectivity sta
 
   This method removes the listener that was added with :code:`addConnectionStateListener` to stop receiving callbacks.
 
+.. versioned-toggle-box:: addLifecycleListener
+  :color: blue
+  :versionadded-android: 3.10.2
+  :versionadded-ios: 3.10.2
+
+  The :code:`addLifecycleListener` method can be used to register a callback function that gets called when the webview or the device changes its lifecycle state.
+  The listener will also be called with the current state when this method is called.
+
+  This method takes a single parameter: A callback function that gets called with one parameter of type object.
+
+  This object will consist of a :code:`type` with the following values
+
+  * :code:`STARTED` if the webview appears
+  * :code:`RESUMED` if the webview is visible and gets focus
+  * :code:`PAUSED` if the webview is visible but loses focus
+  * :code:`STOPPED` if the webview disappears
+
+  When the app comes to foreground or background and the webview is presented, the callback will also be called with the specific :code:`type`.
+
+  .. code-block:: javascript
+    :linenos:
+
+    {
+      "type": "STARTED|RESUMED|PAUSED|STOPPED"
+    }
+
+.. versioned-toggle-box:: removeLifecycleListener
+  :color: blue
+  :versionadded-android: 3.10.2
+  :versionadded-ios: 3.10.2
+
+  This method removes the listener that was added with :code:`addLifecycleListener` to stop receiving callbacks.
+
+.. _webviews_app_closeonboarding:
+
+.. versioned-toggle-box:: closeOnboarding
+  :color: blue
+  :versionadded-android: 3.10.0
+  :versionadded-ios: 3.10.0
+
+  Close the onboarding screen. If true is passed as the first parameter the
+  onboarding will be shown again on the next app start.
+
+  This API method is only available on the onboarding screen.
+
+  See the :doc:`onboarding documentation </apps/onboarding>` for more information about this feature.
 
 App-Browser
 ***********
@@ -153,6 +275,9 @@ current webview, e.g. if it's displayed modally or embedded, has titlebar and co
             // Impl
         },
         isControlsEnabled: function (callback) {
+            // Impl
+        },
+        isStatusBarEnabled: function (callback) {
             // Impl
         }
      }
@@ -192,6 +317,18 @@ current webview, e.g. if it's displayed modally or embedded, has titlebar and co
   :versionadded-web-kiosk: 3.7.0
 
   Get the controls configuration for the current webview.
+
+  This method has one parameter, a callback function which will get a boolean
+  value in as a single parameter.
+
+.. versioned-toggle-box:: isStatusBarEnabled
+  :color: blue
+  :versionadded-android: 3.10.0
+  :versionadded-ios: 3.10.0
+  :versionadded-web-player: 3.10.0
+  :versionadded-web-kiosk: 3.10.0
+
+  Get the statusbar configuration for the current webview.
 
   This method has one parameter, a callback function which will get a boolean
   value in as a single parameter.
@@ -589,6 +726,20 @@ Metadata / information about the app and issue can be accessed through this java
 
     * Storytelling Content
 
+  .. versioned-toggle-box:: onboarding_mode
+    :color: blue
+    :versionadded-android: 3.10.1
+    :versionadded-ios: 3.10.1
+
+    The mode for the onboarding screen. Can be :code:`appstart` when opened
+    during app start or :code:`manual` when opened via action url.
+
+    |
+
+    **Available contexts**
+
+    * HTML onboarding screen
+
 Storefront
 **********
 
@@ -600,87 +751,99 @@ Web content can access storefront data through a javascript interface.
   :caption: Storefront JavaScript-Interface
 
   window.purple = {
-    /**
-     * @public
-     * @static
-     * @namespace StorefrontController
-     */
-    storefront: {
       /**
-       * Get subscriptions.
-       *
-       * @param {Function} callback     the callback for the subscriptions
+       * @public
+       * @static
+       * @namespace StorefrontController
        */
-      getSubscriptions: function (callback) {
-          // Implementation
-      },
-      /**
-       * Gets a list of all publications. Callback will be called with a
-       *  JSONArray of Publication objects.
-       */
-      getPublications: function (callback) {
-          // Implementation
-      },
-      /**
-       * Gets a list of all issues for the publication with the given
-       * publicationId. Callback will be called with a JSONArray of Issue
-       * objects.
-       */
-      getIssues: function (publicationId, callback) {
-          // Implementation
-      },
-      /**
-       * Gets a list of all issue states for the given issueIds. Callback
-       * will be called with a JSONArray of IssueState objects without a
-       * progress value.
-       */
-      getIssueStates: function (issueIds, callback) {
-          // Implementation
-      },
-      /**
-       * Starts the download of the issue with the given issueId.
-       * This can also be a preview issue.
-       */
-      startDownload: function (issueId) {
-          // Implementation
-      },
-      /**
-       * Pauses the download of the issue with the given issueId.
-       * This can also be a preview issue.
-       */
-      pauseDownload: function (issueId) {
-          // Implementation
-      },
-      /**
-       * Deletes the content of the issue with the given issueId.
-       * This includes the preview content and temporary downloaded data.
-       * The callback will be called with the current IssueState object.
-       */
-      deleteIssue: function (issueId, callback) {
-          // Implementation
-      },
-      /**
-       * Adds a listener for issue state changes.
-       * The listener will be called with an IssueState object with a
-       * progress value.
-       */
-      addIssueStateListener: function (listener) {
-          // Implementation
-      },
-      /**
-       * Removes a listener for issue state changes.
-       */
-      removeIssueStateListener: function (listener) {
-          // Implementation
-      },
-      /**
-       * Loads the new storefront.
-       * The callback will be called with the StorefrontUpdateResult object.
-       */
-      updateStorefront: function (callback) {
-          // Implementation
+      storefront: {
+          /**
+           * Get subscriptions.
+           *
+           * @param {Function} callback     the callback for the subscriptions
+           */
+          getSubscriptions: function (callback) {
+              // Implementation
+          },
+          /**
+           * Gets a list of all publications. Callback will be called with a
+           *  JSONArray of Publication objects.
+           */
+          getPublications: function (callback) {
+              // Implementation
+          },
+          /**
+           * Gets a list of all issues for the publication with the given
+           * publicationId. Callback will be called with a JSONArray of Issue
+           * objects.
+           */
+          getIssues: function (publicationId, callback) {
+              // Implementation
+          },
+          /**
+           * Gets a list of all issue states for the given issueIds. Callback
+           * will be called with a JSONArray of IssueState objects without a
+           * progress value.
+           */
+          getIssueStates: function (issueIds, callback) {
+              // Implementation
+          },
+          /**
+           * Starts the download of the issue with the given issueId.
+           * This can also be a preview issue.
+           */
+          startDownload: function (issueId) {
+              // Implementation
+          },
+          /**
+           * Pauses the download of the issue with the given issueId.
+           * This can also be a preview issue.
+           */
+          pauseDownload: function (issueId) {
+              // Implementation
+          },
+          /**
+           * Deletes the content of the issue with the given issueId.
+           * This includes the preview content and temporary downloaded data.
+           * The callback will be called with the current IssueState object.
+           */
+          deleteIssue: function (issueId, callback) {
+              // Implementation
+          },
+          /**
+           * Adds a listener for issue state changes.
+           * The listener will be called with an IssueState object with a
+           * progress value.
+           */
+          addIssueStateListener: function (listener) {
+              // Implementation
+          },
+          /**
+           * Removes a listener for issue state changes.
+           */
+          removeIssueStateListener: function (listener) {
+              // Implementation
+          },
+          /**
+           * Loads the new storefront.
+           * The callback will be called with the StorefrontUpdateResult object.
+           */
+          updateStorefront: function (callback) {
+              // Implementation
+          },
+          /**
+           * Adds a listener for newsstand and newsfeed changes.
+           */
+          addUpdateListener: function (listener) {
+              // Implementation
+          },
+          /**
+           * Removes a listener for newsstand and newsfeed changes.
+           */
+          removeUpdateListener: function (listener) {
+              // Implementation
+          }
       }
-    }
   }
 
 .. versioned-toggle-box:: getSubscriptions
@@ -779,6 +942,7 @@ Web content can access storefront data through a javascript interface.
       "pubDate": 123,
       "contentLength": 1337,
       "numberOfPages": 42,
+      "comingSoon": true,
       "previewIssue": {
         "id": "ddeeff",
         "contentLength": 1337,
@@ -918,6 +1082,21 @@ Web content can access storefront data through a javascript interface.
       "error_code": "[OFFLINE|UNKNOWN]"
     }
 
+.. versioned-toggle-box:: addUpdateListener
+  :versionadded-android: 3.11.0
+  :versionadded-ios: 3.11.0
+  :color: purple
+
+  The :code:`addUpdateListener` method allows the registration of a listener that will be called each time the kiosk has been updated.
+  This method takes a single parameter which is a callback function which itself takes no parameters.
+
+.. versioned-toggle-box:: removeUpdateListener
+  :versionadded-android: 3.11.0
+  :versionadded-ios: 3.11.0
+  :color: purple
+
+  This method removes a listener that was previously added with :code:`addUpdateListener` to stop receiving kiosk updates.
+
 Store
 *****
 
@@ -929,83 +1108,83 @@ through a javascript interface.
 .. code-block:: javascript
   :caption: Store JavaScript-Interface
 
-  window.purple = {
-    /**
-     * @public
-     * @static
-     * @namespace StoreController
-     */
-    store: {
-      /**
-       * Purchase a product
-       *
-       * @param {string} productId
-       * @param {Function} callback
-       */
-      purchase: function (productId, callback) {
-        // Implementation
-      },
-      /**
-       * Subscribe to a subscription
-       *
-       * @param {string} productId
-       * @param {Function} callback
-       */
-      subscribe: function (productId, callback) {
-        // Implementation
-      },
-      /**
-       * Restores purchases on device. Only available on iOS
-       * (Android will call callback immediately).
-       *
-       * @param {Function} callback
-       */
-      restorePurchases: function (callback) {
-        // Implementation
-      },
-      /**
-       * Set a function as a listener which should be called when
-       * the purchase state of a subscription product did change.
-       * @param {Function} listener
-       */
-      setPurchaseStateListener: function (listener) {
-        // Implementation
-      },
-      /**
-       * Get the current subscription codes
-       *
-       * @param {Function} callback
-       */
-      getSubscriptionCodes: function (callback) {
-        // Implementation
-      },
-      /**
-       * Add subscription codes
-       *
-       * @param {String[]} codes
-       * @param {Function} callback
-       */
-      addSubscriptionCodes: function (codes, callback) {
-        // Implementation
-      },
-      /**
-       * Remove the subscription codes
-       *
-       * @param {String[]} codes
-       * @param {Function} callback
-       */
-      removeSubscriptionCodes: function (codes, callback) {
-        // Implementation
-      },
-      /**
-       * Gets the price information for the given productIds.
-       * The callback will be called with a JSONArray of ProductInfo objects.
-       */
-      getPrices: function (productIds, callback) {
-        // Implementation
-      }
+    window.purple = {
+        /**
+         * @public
+         * @static
+         * @namespace StoreController
+         */
+        store: {
+            /**
+             * Purchase a product
+             *
+             * @param {string} productId
+             * @param {Function} callback
+             */
+            purchase: function (productId, callback) {
+                // Implementation
+            },
+            /**
+             * Subscribe to a subscription
+             *
+             * @param {string} productId
+             * @param {Function} callback
+             */
+            subscribe: function (productId, callback) {
+                // Implementation
+            },
+            /**
+             * Restores purchases on device. Only available on iOS
+             * (Android will call callback immediately).
+             *
+             * @param {Function} callback
+             */
+            restorePurchases: function (callback) {
+                // Implementation
+            },
+            /**
+             * Set a function as a listener which should be called when
+             * the purchase state of a subscription product did change.
+             * @param {Function} listener
+             */
+            setPurchaseStateListener: function (listener) {
+                // Implementation
+            },
+            /**
+             * Get the current subscription codes
+             *
+             * @param {Function} callback
+             */
+            getSubscriptionCodes: function (callback) {
+                // Implementation
+            },
+            /**
+             * Add subscription codes
+             *
+             * @param {String[]} codes
+             * @param {Function} callback
+             */
+            addSubscriptionCodes: function (codes, callback) {
+                // Implementation
+            },
+            /**
+             * Remove the subscription codes
+             *
+             * @param {String[]} codes
+             * @param {Function} callback
+             */
+            removeSubscriptionCodes: function (codes, callback) {
+                // Implementation
+            },
+            /**
+             * Gets the price information for the given productIds.
+             * The callback will be called with a JSONArray of ProductInfo objects.
+             */
+            getPrices: function (productIds, callback) {
+                // Implementation
+            }
+        }
     }
-  }
 
 .. versioned-toggle-box:: purchase
   :versionadded-android: 3.0.0
@@ -1299,7 +1478,12 @@ respond with another HTML 5 PostMessage which the child window (iframe) will
 process.
 
 From V 3.0.0 :code:`purpleInterface.js` is included in the Web Player repository.
-The latest version is also available here: https://composer.purplepublish.com/purple-latest/purpleInterface/purpleInterface.js
+The latest version is delivered via Purple DS | Web Newsstand.
+It is recommended to include the script from one of the following URLs to assure to always use the latest version:
+
+https://kiosk.purplemanager.com/scripts/purpleInterface.js
+
+https://kiosk.purplemanager.com/scripts/purpleInterface.min.js
 
 .. note::
 
@@ -1311,130 +1495,136 @@ The latest version is also available here: https://composer.purplepublish.com/pu
   .. code-block:: javascript
 
     window.purpleInterface = {
-      callbacks: {},
-      util: {
+    callbacks: {},
+    util: {
         receiveMessage: function (event) {
-          try {
-            // get response data
-            var responseData = JSON.parse(event.data);
-            var value = responseData.value;
-            var callbackId = responseData.callbackId;
-            var key = responseData.key;
+            try {
+                // get response data
+                var responseData = JSON.parse(event.data);
+                var value = responseData.value;
+                var callbackId = responseData.callbackId;
+                var key = responseData.key;
 
-            if (callbackId) {// call callback function from callback map
-              if (key) {
-                window.purpleInterface.callbacks[callbackId](key, value);
-              } else {
-                window.purpleInterface.callbacks[callbackId](value);
-              }// delete callback
-              window.purpleInterface.callbacks[callbackId] = null;
-            } else if (key === 'RELOAD') {
-              window.document.location.reload();
-            } else if (key === 'HISTORY_BACK') {
-              window.history.back();
-            } else if (key === 'HISTORY_FORWARD') {
-              window.history.forward();
-            } else if (key === 'DOCUMENT_TITLE') {
-              window.purpleInterface.util.postMessage('DOCUMENT_TITLE', 'DOCUMENT_TITLE', document.title);
+                if (callbackId) {
+                    // call callback function from callback map
+                    if(key) {
+                        window.purpleInterface.callbacks[callbackId](key, value);
+                    } else {
+                        window.purpleInterface.callbacks[callbackId](value);
+                    }
+                    // delete callback
+                    window.purpleInterface.callbacks[callbackId] = null;
+                } else if(key === 'RELOAD'){
+                    window.document.location.reload();
+                } else if(key === 'HISTORY_BACK') {
+                    window.history.back();
+                } else if(key === 'HISTORY_FORWARD') {
+                    window.history.forward();
+                } else if(key === 'DOCUMENT_TITLE') {
+                    window.purpleInterface.util.postMessage('DOCUMENT_TITLE', 'DOCUMENT_TITLE', document.title);
+                }
+
+            } catch (e) {
             }
+        },
+        postMessage: function (type, key, value, callback) {
 
-          } catch (e) {
-          }
-        }, postMessage: function (type, key, value, callback) {
-          if (window !== window.parent) {        // create requestData
-            var requestData = {
-              type: type,
-              key: key
-            };
-            if (value) {
-              requestData.value = value;
+            if (window !== window.parent) {
+
+                // create requestData
+                var requestData = {
+                    type: type,
+                    key: key
+                };
+                if (value) {
+                    requestData.value = value;
+                }
+                if (callback) {
+                    // create id = index in callback array
+                    var callbackId = window.purpleInterface.util.generateUUID();
+                    requestData.callbackId = callbackId;
+                    // add callback to callback array
+                    window.purpleInterface.callbacks[callbackId] = callback;
+                }
+
+                // call postMessage
+                window.parent.postMessage(JSON.stringify(requestData), '*');
             }
-            if (callback) {
-              // create id = index in callback array
-              var callbackId = window.purpleInterface.util.generateUUID();
-              requestData.callbackId = callbackId;
-              // add callback to callback array
-              window.purpleInterface.callbacks[callbackId] = callback;
-            }
-
-            // call postMessage
-            window.parent.postMessage(JSON.stringify(requestData), '*');
-          }
-
 
         },
         generateUUID: function () {
-          var d = new Date().getTime();
-          return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-            var r = (d + Math.random() * 16) % 16 | 0;
-            d = Math.floor(d / 16);
-            return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
-          });
+            var d = new Date().getTime();
+            return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+                var r = (d + Math.random() * 16) % 16 | 0;
+                d = Math.floor(d / 16);
+                return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+            });
         }
       }
     };
 
     document.addEventListener('DOMContentLoaded', function () {
-      window.addEventListener('message', window.purpleInterface.util.receiveMessage);
+        window.addEventListener('message', window.purpleInterface.util.receiveMessage);
 
-      window.purpleInterface.util.postMessage('LOAD', 'LOAD', null, function () {
+        window.purpleInterface.util.postMessage('LOAD', 'LOAD', null, function () {
 
-        if (!window.purple) {
+            if (!window.purple) {
 
-          window.purple = {};
-          var links = document.querySelectorAll('a[href^="purple://"], a[^="pkapp://"], a[href^="pkitem://"]');
-          for (var i = 0; i < links.length; i++) {
-            links[i].addEventListener('click', function (e) {
-              window.purpleInterface.util.postMessage('ACTION_URL', 1, this.href);
-              e.preventDefault();
-            });
-          }
+                window.purple = {};
 
+                var links = document.querySelectorAll('a[href^="purple://"], a[ ^="pkapp://"], a[href^="pkitem://"]');
+                for (var i = 0; i < links.length; i++) {
+                    links[i].addEventListener('click', function (e) {
+                        window.purpleInterface.util.postMessage('ACTION_URL', 1, this.href);
+                        e.preventDefault();
+                    });
+                }
 
-          // purple object
-          window.purple.metadata = {
-            getMetadata: function (key, callback) {
-              window.purpleInterface.util.postMessage('META', key, null, callback);
+                // purple object
+                window.purple.metadata = {
+                    getMetadata: function (key, callback) {
+                        window.purpleInterface.util.postMessage('META', key, null, callback);
+                    }
+                };
+
+                window.purple.state = {
+                    setState: function (key, value) {
+                        window.purpleInterface.util.postMessage('STATE', key, value, null);
+                    },
+                    getState: function (key, callback) {
+                        window.purpleInterface.util.postMessage('STATE', key, null, callback);
+                    }
+
+                };
+
+                window.purple.issue = {
+                    getPages: function (callback) {
+                        window.purpleInterface.util.postMessage('PAGES', 'PAGES', null, callback);
+                    },
+                    getToc: function (callback) {
+                        window.purpleInterface.util.postMessage('TOC', 'TOC', null, callback);
+                    }
+                };
+
+                window.purple.closeView = function() {
+                    window.purpleInterface.util.postMessage('CLOSE_VIEW', 'CLOSE_VIEW');
+                };
+
+                if ('onPurpleLoad' in window && typeof onPurpleLoad === 'function') {
+                    onPurpleLoad();
+                }
+
+                var search = window.location.search;
+                if (document.referrer){
+                    if (search) {
+                        search += '&' + document.referrer.split('?')[1];
+                    } else {
+                        search = '?' + document.referrer.split('?')[1];
+                    }
+                }
+                history.replaceState({}, document.title, window.location.origin + window.location.pathname + search);
             }
-          };
 
-          window.purple.state = {
-            setState: function (key, value) {
-              window.purpleInterface.util.postMessage('STATE', key, value, null);
-            },
-            getState: function (key, callback) {
-              window.purpleInterface.util.postMessage('STATE', key, null, callback);
-            }
-
-          };
-
-          window.purple.issue = {
-            getPages: function (callback) {
-              window.purpleInterface.util.postMessage('PAGES', 'PAGES', null, callback);
-            },
-            getToc: function (callback) {
-              window.purpleInterface.util.postMessage('TOC', 'TOC', null, callback);
-            }
-          };
-
-          window.purple.closeView = function () {
-            window.purpleInterface.util.postMessage('CLOSE_VIEW', 'CLOSE_VIEW');
-          };
-
-          if ('onPurpleLoad' in window && typeof onPurpleLoad === 'function') {
-            onPurpleLoad();
-          }
-
-          var search = window.location.search;
-          if (document.referrer) {
-            if (search) {
-              search += '&' + document.referrer.split('?')[1];
-            } else {
-              search = '?' + document.referrer.split('?')[1];
-            }
-          }
-          history.replaceState({}, document.title, window.location.origin + window.location.pathname + search);
-        }
-
-      });
+        });
     });
+
