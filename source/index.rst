@@ -15,3 +15,4 @@ Welcome to Purple's documentation!
    tracking
    webviews
    entitlement
+   manager_public_interface
