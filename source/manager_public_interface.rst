@@ -584,3 +584,28 @@ Result
 
 On successful execution, the appId is returned together with an HTTP status code of 200.
 Otherwise, a meaningful HTTP status code and response string are returned.
+
+Download dynamic resources for an app
+===================================
+
+The currently uploaded dynamic resource file can be downloaded by a GET request.
+If no dynamic resources have been uploaded yet, the app will use default resources and these will be returned by this request.
+
+[GET] /app/downloadresources
+
+Request Parameters
+------------------
+
+=============== ======= ======================================================================================================
+Parameter name  Type    Description
+=============== ======= ======================================================================================================
+sessionID       String  Valid session token created by `Login`_.
+appId           String  Id of an app.
+preview         Boolean :code:`true` if the preview resources should be returned, otherwise the live resources will be returned.
+=============== ======= ======================================================================================================
+
+Result
+------
+
+On successful execution, the file is returned together with an HTTP status code of 200.
+Otherwise, a meaningful HTTP status code is returned.
