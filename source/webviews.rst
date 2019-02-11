@@ -26,6 +26,11 @@ or the same webview, according to the standard browser specifications.
 
 Starting with version 3.10 Action URLs can also be opened via this API on all platforms.
 
+Cookies
+*******
+
+Starting with version 3.13.0 cookies are enabled for all webviews in the Android and iOS apps.
+
 JavaScript-Interfaces
 #####################
 
@@ -115,8 +120,33 @@ The purple-Object is available instantly after loading the script.
       },
       state: {
           ...
+      },
+      tracking: {
+          ...
+      },
+      media: {
+          ...
       }
   }
+
+Due to the asynchronous nature of the javascript bridge all api calls that return values require a callback function as a parameter.
+This function is then called by the native implementation with the value as its parameter. A common usage would look like this:
+
+.. code-block:: javascript
+  :linenos:
+  :caption: Sample usage of callback functions
+
+  function callbackFunctionForSomething(valueOfSomething) {
+      console.log(valueOfSomething);
+  }
+
+  window.purple.getSomething(callbackFunctionForSomething);
+
+  // or inline:
+
+  window.purple.getSomething(function(valueOfSomething) {
+      console.log(valueOfSomething)
+  });
 
 App
 ***
@@ -268,17 +298,29 @@ current webview, e.g. if it's displayed modally or embedded, has titlebar and co
 
   window.purple = {
      appBrowser: {
+        /**
+         * Get the display mode for the current webview.
+         */
         getDisplayMode: function (callback) {
-            // Impl
+            // Implementation
         },
+        /**
+         * Get the titlebar configuration for the current webview.
+         */
         isTitleBarEnabled: function (callback) {
-            // Impl
+            // Implementation
         },
+        /**
+         * Get the controls configuration for the current webview.
+         */
         isControlsEnabled: function (callback) {
-            // Impl
+            // Implementation
         },
+        /**
+         * Get the statusbar configuration for the current webview.
+         */
         isStatusBarEnabled: function (callback) {
-            // Impl
+            // Implementation
         }
      }
   }
@@ -349,10 +391,11 @@ Metadata / information about the app and issue can be accessed through this java
        */
       metadata: {
           /**
-           * Get metadata values by key.
+           * Get metadata values by key. A callback function with a single parameter is required that will be called
+           * with the value for the given key.
            *
            * @param {string} key          the metadata key
-           * @param {string} callback     the callback for the value
+           * @param {Function} callback   the callback for the value
            */
           getMetadata: function (key, callback) {
               // Implementation
@@ -603,6 +646,38 @@ Metadata / information about the app and issue can be accessed through this java
 
     * Html-Entitlement Login
 
+  .. versioned-toggle-box:: entitlement_mode
+    :color: blue
+    :versionadded-android: 3.11.0
+    :versionadded-ios: 3.11.0
+
+    Can be either ``entitlement``, ``oauth`` or ``none`` indicating the mode of the first entitlement server that is configured for the app.
+
+    |
+
+    **Available contexts**
+
+    * Entitlement HTML Login
+    * Dynamic HTML-Content
+    * In-App-Browser
+    * Storytelling Content
+
+  .. versioned-toggle-box:: entitlement_refresh_token
+    :color: blue
+    :versionadded-android: 3.11.0
+    :versionadded-ios: 3.11.0
+
+    The refresh token that is being used to request a new access token for the entitlement api calls. This value is only available if oauth is being used as entitlement server.
+
+    |
+
+    **Available contexts**
+
+    * Entitlement HTML Login
+    * Dynamic HTML-Content
+    * In-App-Browser
+    * Storytelling Content
+
   .. versioned-toggle-box:: issue_id
     :color: blue
     :versionadded-android: 2.4.0
@@ -767,7 +842,7 @@ Web content can access storefront data through a javascript interface.
           },
           /**
            * Gets a list of all publications. Callback will be called with a
-           *  JSONArray of Publication objects.
+           * JSONArray of Publication objects.
            */
           getPublications: function (callback) {
               // Implementation
@@ -841,6 +916,37 @@ Web content can access storefront data through a javascript interface.
            * Removes a listener for newsstand and newsfeed changes.
            */
           removeUpdateListener: function (listener) {
+              // Implementation
+          }
+          /**
+           * Returns the base url for the files of the given issueId.
+           */
+          getIssueBaseUrl: function (issueId, callback) {
+              // Implementation
+          },
+          /**
+           * Returns the pages information for the given issueId.
+           */
+          getIssuePages: function (issueId, callback) {
+              // Implementation
+          },
+          /**
+           * Returns the toc information for the given issueId.
+           */
+          getIssueToc: function (issueId, callback) {
+              // Implementation
+          },
+          /**
+           * Open a list of articles in a pager.
+           */
+          openArticles: function (articleIds, initialArticleId, callback) {
+              // Implementation
+          },
+          /**
+           * Get a list of all categories. The callback will be called with a
+           * JSONArray of Category objects.
+           */
+          getCategories: function (callback) {
               // Implementation
           }
       }
@@ -947,12 +1053,14 @@ Web content can access storefront data through a javascript interface.
         "id": "ddeeff",
         "contentLength": 1337,
         "numberOfPages": 42
-      }
+      },
       "productId": "com.sprylab.issue1",
       "thumbnails": {
         "default": "url",
         "kind1": "url"
-      }
+      },
+      "tags": ["tag1", "tag2", "tag3"],
+      "categories": ["categoryId1", "categoryId2"]
     }
 
   The :code:`pubDate` is a UNIX timestamp in ms.
@@ -1097,6 +1205,100 @@ Web content can access storefront data through a javascript interface.
 
   This method removes a listener that was previously added with :code:`addUpdateListener` to stop receiving kiosk updates.
 
+.. versioned-toggle-box:: getIssueBaseUrl
+  :versionadded-android: 3.13.0
+  :versionadded-ios: 3.13.0
+  :color: purple
+
+  This method can be used to retrieve the base url for the given issueId. If the issue is not downloaded yet, the callback is called with :code:`null`.
+  With this base url it is possible to request files of an issue. Requests to the :code:`pages.xml` and :code:`TOC.xml` will return :code:`404 Not Found`.
+  To request the contents of these files, the :code:`storefront.getIssuePages()` and :code:`storefront.getIssueToc()` methods should be used.
+
+.. versioned-toggle-box:: getIssuePages
+  :versionadded-android: 3.13.0
+  :versionadded-ios: 3.13.0
+  :color: purple
+
+  This method works the same as issue.getPages() except that it takes an issueId as parameter and returns the data for that issue.
+  See :ref:`issue.getPages() <webviews_issue_getpages>` for details regarding the page model.
+
+.. versioned-toggle-box:: getIssueToc
+  :versionadded-android: 3.13.0
+  :versionadded-ios: 3.13.0
+  :color: purple
+
+  This method works the same as issue.getToc() except that it takes an issueId as parameter and returns the data for that issue.
+  See :ref:`issue.getToc() <webviews_issue_gettoc>` for details regarding the toc model.
+
+.. versioned-toggle-box:: openArticles
+  :versionadded-android: 3.14.0
+  :versionadded-ios: 3.14.0
+  :color: purple
+
+  Opens a list of articles by their issue ID in a native pager.
+  Invalid issues, e.g. paid issues, non-channel issues, will be filtered. If no
+  issues remain to be opened, the callback will be called with the `error_code`
+  `NO_ISSUES_FOUND`.
+
+  The second parameter may be an issue ID from the list of issue IDs which will
+  be the initially opened issue. If the issue ID is invalid, the first valid issue
+  will be shown.
+
+  When the articles have been successfully opened the callback function will be
+  called with a simple json object:
+
+  .. code-block:: javascript
+    :linenos:
+
+    {
+      "success": true
+    }
+
+  For failures it will be a json object which may contain an error code:
+
+  .. code-block:: javascript
+    :linenos:
+
+    {
+      "success": false,
+      "error_code": "[NO_ISSUES_FOUND|UNKNOWN]"
+    }
+
+.. versioned-toggle-box:: getCategories
+  :versionadded-android: 3.15.0
+  :versionadded-ios: 3.15.0
+  :color: purple
+
+  Gets a list of all categories. The callback will be called with a JSONArray like the following example:
+
+  .. code-block:: javascript
+    :linenos:
+
+    [
+      {
+        "id": "categoryId1",
+        "name": "Category name",
+        "thumbnailURL": "http://",
+        "properties": { "name": "value" },
+        "categories": [
+          {
+            "id": "categoryId2",
+            "name": "Category name 2",
+            "thumbnailURL": "http://",
+            "properties": { "name": "value" },
+            "categories": []
+          }
+        ]
+      },
+      {
+        "id": "categoryId3",
+        "name": "Category name",
+        "thumbnailURL": "http://",
+        "properties": { "name": "value" },
+        "categories": []
+      }
+    ]
+
 Store
 *****
 
@@ -1206,7 +1408,7 @@ through a javascript interface.
       "success": true
     }
 
-  For failures it will be json object which may contain an error code:
+  For failures it will be a json object which may contain an error code:
 
   .. code-block:: javascript
 
@@ -1234,7 +1436,7 @@ through a javascript interface.
       "success": true
     }
 
-  For failures it will be json object which may contain an error code:
+  For failures it will be a json object which may contain an error code:
 
   .. code-block:: javascript
 
@@ -1342,11 +1544,14 @@ of the current issue.
       }
   }
 
+.. _webviews_issue_getpages:
+
 .. versioned-toggle-box:: getPages
   :versionadded-android: 3.3.0
   :versionadded-ios: 3.3.0
   :versionadded-web-player: 3.2.0
   :versionadded-composer: 3.1.0
+  :versionchanged: 3.13 :code:`targetURL` has been added to the response. :code:`targetURL` and :code:`thumbnailURL` do not have a scheme such as :code:`pkmedia://` anymore and are now relative to the content root.
   :color: green
 
   The :code:`getPages` method can be used to retrieve all pages.
@@ -1371,18 +1576,22 @@ of the current issue.
       "showPurchaseSuggestion": true,
       "placeholder": false,
       "excludeFromPaging": true,
-      "thumbnailURL": "",
+      "targetURL": "page-id.stxml",
+      "thumbnailURL": "thumbs/thumb-page123.jpg",
       "sharingEnabled": true,
       "sharingText": "Text",
       "sharingURL": "http://example.com",
       "customData": "tag1,tag2"
     }
 
+.. _webviews_issue_gettoc:
+
 .. versioned-toggle-box:: getToc
   :versionadded-android: 3.4.0
   :versionadded-ios: 3.4.0
   :versionadded-web-player: 3.3.0
   :versionadded-composer: TODO
+  :versionchanged: 3.13 :code:`thumbnailURL` does not have a scheme such as :code:`pkmedia://` anymore and is now relative to the content root.
   :color: green
 
   The :code:`getToc` method can be used to retrieve all toc pages.
@@ -1463,6 +1672,184 @@ It can only store string values.
   If there is no value for the given key, the value will be :code:`null`.
 
   .. hint:: The key is case-sensitive.
+
+Tracking
+********
+
+This API can be used to track custom events in web views (e.g. purchase over an external entitlement or custom view like read mode).
+There are three different types of events:
+
+#. Actions
+#. Views
+#. Purchases
+
+The events are forwarded to the app's enabled :doc:`tracking services<tracking>`. The same :doc:`configuration mechanism<tracking>` like in the apps is used.
+
+.. note::
+
+  User Attributes are currently not supported.
+
+.. code-block:: javascript
+  :linenos:
+  :caption: Tracking JavaScript-Interface
+
+  window.purple = {
+      tracking: {
+          trackAction: function (key, optionalParams) {
+              // Implementation
+          },
+          trackView: function (key, optionalParams) {
+              // Implementation
+          },
+          trackPurchase: function (key, productId, price, currencyCode, transactionId, optionalParams) {
+              // Implementation
+          }
+      }
+  }
+
+.. note::
+
+  The :code:`optionalParams` (key-value pairs) can be sent with each event if the tracking service supports this. Every key will be included in the event. The values can contain all placeholders supported for the event and will be evaluated (see :doc:`app tracking<tracking>`) when sending the event to the service.
+
+.. versioned-toggle-box:: trackAction
+  :versionadded-android: 3.10.3
+  :versionadded-ios: 3.10.5
+  :versionadded-web-player: 3.11.0
+  :versionadded-web-kiosk: 3.11.0
+  :color: blue
+
+  The :code:`trackAction` method can be used to track a custom action event.
+
+  It takes two parameters: key and optionalParams.
+
+.. versioned-toggle-box:: trackView
+  :versionadded-android: 3.10.3
+  :versionadded-ios: 3.10.5
+  :versionadded-web-player: 3.11.0
+  :versionadded-web-kiosk: 3.11.0
+  :color: blue
+
+  The :code:`trackView` method can be used to track a custom view event.
+
+  It takes two parameters: key and optionalParams.
+
+.. versioned-toggle-box:: trackPurchase
+  :versionadded-android: 3.10.3
+  :versionadded-ios: 3.10.5
+  :versionadded-web-player: 3.11.0
+  :versionadded-web-kiosk: 3.11.0
+  :color: blue
+
+  The :code:`trackPurchase` method can be used to track a custom purchase event.
+
+  It takes six parameters: key, productId, price, currencyCode, transactionId and optionalParams.
+
+Media
+*****
+
+This API can be used to play remote audio streams and files. The audio will
+continue playing even if the user puts the app to the background.
+
+.. code-block:: javascript
+  :linenos:
+  :caption: Media JavaScript-Interface
+
+  window.purple = {
+    media: {
+      startAudio: function (displayName, url) {
+          // Implementation
+      },
+      pauseAudio: function () {
+          // Implementation
+      },
+      resumeAudio: function () {
+          // Implementation
+      },
+      stopAudio: function () {
+          // Implementation
+      },
+      seekTo: function(time) {
+          // Implementation
+      },
+      addStatusListener: function (statusListener) {
+          // Implementation
+      },
+      removeStatusListener: function (statusListener) {
+          // Implementation
+      },
+      addProgressListener: function (progressListener) {
+         // Implementation
+      },
+      removeProgressListener: function (progressListener) {
+          // Implementation
+      }
+    }
+  };
+
+.. versioned-toggle-box:: startAudio
+  :versionadded-android: 3.11.0
+  :versionadded-ios: 3.11.0
+  :color: blue
+
+  Starts a remote audio stream or file. This method takes two parameters:
+  a display name used for notification and player UI and the URL to play.
+
+.. versioned-toggle-box:: pauseAudio
+  :versionadded-android: 3.11.0
+  :versionadded-ios: 3.11.0
+  :color: blue
+
+  Pauses the current audio playback.
+
+.. versioned-toggle-box:: resumeAudio
+  :versionadded-android: 3.11.0
+  :versionadded-ios: 3.11.0
+  :color: blue
+
+  Resumes the current audio playback.
+
+.. versioned-toggle-box:: stopAudio
+  :versionadded-android: 3.11.0
+  :versionadded-ios: 3.11.0
+  :color: blue
+
+  Stops the current audio playback.
+
+.. versioned-toggle-box:: seekTo
+  :versionadded-android: 3.11.0
+  :versionadded-ios: 3.11.0
+  :color: blue
+
+  Seeks to the given time in the current audio playback. This method takes the
+  desired time in milliseconds.
+
+.. versioned-toggle-box:: addStatusListener
+  :versionadded-android: 3.11.0
+  :versionadded-ios: 3.11.0
+  :color: blue
+
+  Adds a listener for playback state changes.
+
+.. versioned-toggle-box:: removeStatusListener
+  :versionadded-android: 3.11.0
+  :versionadded-ios: 3.11.0
+  :color: blue
+
+  Removes a listener for playback state changes.
+
+.. versioned-toggle-box:: addProgressListener
+  :versionadded-android: 3.11.0
+  :versionadded-ios: 3.11.0
+  :color: blue
+
+  Adds a listener for playback progress changes.
+
+.. versioned-toggle-box:: removeProgressListener
+  :versionadded-android: 3.11.0
+  :versionadded-ios: 3.11.0
+  :color: blue
+
+  Removes listener for playback progress changes.
 
 Web Player specifics
 ********************
