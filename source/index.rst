@@ -16,3 +16,5 @@ Welcome to Purple's documentation!
    webviews
    entitlement
    manager_public_interface
+   search_api
+
