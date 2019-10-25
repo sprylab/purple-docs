@@ -87,9 +87,10 @@ Configuration Example
         "APP_BOOKMARK_ADDED": {
           "enabled": true,
           "templates": {
-            "category": "App",
-            "action": "Bookmark added",
-            "label": "{{CONTENT_NAME}}"
+            "action": "Bookmark added"
+          },
+          "parameters": {
+            "name": "{{CONTENT_NAME}}"
           }
         }
       },

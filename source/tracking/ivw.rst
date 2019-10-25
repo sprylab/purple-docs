@@ -2,6 +2,8 @@
 IVW
 ###
 
+.. warning:: As of PK 3.15 for iOS and PK 5.0 for Android this tracking service is not supported anymore.
+
 .. versionadded:: 2.2.0
 
 |IVW| is a tracking service which supports tracking actions (views).

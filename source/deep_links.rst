@@ -277,6 +277,7 @@ App
   :color: blue
   :versionadded-android: 2.7.0
   :versionadded-ios: 2.7.0
+  :deprecated: 5.0 Composer Connect has been removed.
 
   Opens the **Composer Connect** view. Only works if the feature *Composer Connect* has been enabled in the Purple DS Manager.
 
@@ -285,51 +286,6 @@ App
   **URL**
 
   purple://app/composer/connect/open
-
-  |
-
-  **Usable Contexts**
-
-  .. role:: fg-green
-  .. role:: fg-red
-
-  +---------------------------------------+-----------------+
-  | Context                               | Usable          |
-  +=======================================+=================+
-  | App menu                              | :fg-green:`YES` |
-  +---------------------------------------+-----------------+
-  | Kiosk promotion area                  | :fg-green:`YES` |
-  +---------------------------------------+-----------------+
-  | Storytelling content                  | :fg-green:`YES` |
-  +---------------------------------------+-----------------+
-  | Purple webview                        | :fg-green:`YES` |
-  +---------------------------------------+-----------------+
-  | Push notification Manager             | :fg-red:`NO`    |
-  +---------------------------------------+-----------------+
-  | Push notifications Braze / Pinpoint   | :fg-green:`YES` |
-  +---------------------------------------+-----------------+
-  | In-App Messages Braze                 | :fg-green:`YES` |
-  +---------------------------------------+-----------------+
-
-.. raw:: pdf
-
-   PageBreak
-
-.. versioned-toggle-box:: Open manager connect
-  :color: blue
-  :versionadded-android: 2.7.0
-
-  .. warning::
-
-      This action url is not supported on iOS.
-
-  Opens the **Manager Connect** view. Only works if the feature *Purple Manager Connect* has been enabled in the Purple DS Manager.
-
-  |
-
-  **URL**
-
-  purple://app/manager/connect/open
 
   |
 
@@ -399,14 +355,17 @@ App
 
    PageBreak
 
+.. _deeplink-show-dynamic-html-content:
+
 .. versioned-toggle-box:: Show dynamic html content
   :color: blue
   :versionadded-android: 2.1.0
   :versionadded-ios: 2.1.0
   :versionadded-web-kiosk: 3.10.0
-  :versionchanged: 3.10.0 added :code:`force_status_bar` query parameter, 3.11.0 added :code:`app_logo` query parameter
+  :versionchanged: 3.10.0 added :code:`force_status_bar`, 3.11.0 added :code:`app_logo`, 3.14.0: added :code:`bounces` (iOS only), 5.1: added storefront variant
 
   Opens an html file from :doc:`dynamic resources </dynamic_resources>`.
+  The app variant opens the html file on top of the current context while the storefront variant navigates to a kiosk context before opening the html.
 
   |
 
@@ -414,7 +373,11 @@ App
 
   purple://app/resource/dynamic/:code:`<PATH>`
 
+  purple://storefront/resource/dynamic/:code:`<PATH>`
+
   purple://app/resource/dynamic/:code:`<PATH>`?display_mode= :code:`<VALUE>` &title_bar= :code:`<VALUE>` &controls= :code:`<VALUE>` &force_status_bar= :code:`<VALUE>` &app_logo= :code:`<VALUE>`
+
+  purple://storefront/resource/dynamic/:code:`<PATH>`?display_mode= :code:`<VALUE>` &title_bar= :code:`<VALUE>` &controls= :code:`<VALUE>` &force_status_bar= :code:`<VALUE>` &app_logo= :code:`<VALUE>`
 
   .. role:: fg-red
 
@@ -441,6 +404,11 @@ App
   +------------------------+-----------------+-----------------------------------------------------------+
   | app_logo               | :fg-green:`YES` | - :code:`true` show app logo in title bar instead of text |
   |                        |                 | - :code:`false` no app logo (default)                     |
+  +------------------------+-----------------+-----------------------------------------------------------+
+  | bounces                | :fg-green:`YES` | - :code:`true` allow bouncing when scrolling (default)    |
+  |                        |                 | - :code:`false` no bouncing                               |
+  |                        |                 |                                                           |
+  |                        |                 | Note: only available for iOS                              |
   +------------------------+-----------------+-----------------------------------------------------------+
 
   .. hint::
@@ -954,13 +922,15 @@ Kiosk
   :versionadded-web-kiosk: 3.2.0
 
   Performs the entitlement login using the provided **login_name**, **access_token** and **roles**.
+  If the login was performed for an OAuth entitlement server, the **refresh_token** is
+  used for refreshing the **access_token**.
   If the login was successful, the **url_encoded_action_url** will be opened.
 
   |
 
   **URL**
 
-  purple://kiosk/entitlement/login/perform?login_name= ``<LOGIN_NAME>`` &token= ``<ACCESS_TOKEN>`` &roles= ``<ROLES>`` &success_url= ``<URL_ENCODED_ACTION_URL>``
+  purple://kiosk/entitlement/login/perform?login_name= ``<LOGIN_NAME>`` &token= ``<ACCESS_TOKEN>`` &roles= ``<ROLES>`` &refresh_token= ``<REFRESH_TOKEN>`` &success_url= ``<URL_ENCODED_ACTION_URL>``
 
   .. role:: fg-red
 
@@ -972,6 +942,8 @@ Kiosk
   | token                  | :fg-red:`NO`    |
   +------------------------+-----------------+
   | roles                  | :fg-red:`NO`    |
+  +------------------------+-----------------+
+  | refresh_token          | :fg-green:`YES` |
   +------------------------+-----------------+
   | success_url            | :fg-green:`YES` |
   +------------------------+-----------------+
@@ -1028,6 +1000,91 @@ Kiosk
   +------------------------+-----------------+
 
   |
+
+  **Usable Contexts**
+
+  .. role:: fg-green
+  .. role:: fg-red
+
+  +---------------------------------------+-----------------+
+  | Context                               | Usable          |
+  +=======================================+=================+
+  | App menu                              | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Kiosk promotion area                  | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Storytelling content                  | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Purple webview                        | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Push notification Manager             | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
+  | Push notifications Braze / Pinpoint   | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | In-App Messages Braze                 | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+
+.. _deeplink-oauth-login:
+
+.. versioned-toggle-box:: Start OAuth login flow
+  :color: purple
+  :versionadded-android: 3.11.0
+  :versionadded-ios: 3.11.0
+
+  Starts the entitlement OAuth login flow.
+  If the login flow was successful completed, the **url_encoded_action_url** will be opened.
+
+  |
+
+  **URL**
+
+  purple://kiosk/entitlement/login/oauth/start?success_url= ``<URL_ENCODED_ACTION_URL>``
+
+  .. role:: fg-red
+
+  +------------------------+-----------------+
+  | Query-Parameter        | Optional        |
+  +========================+=================+
+  | success_url            | :fg-green:`YES` |
+  +------------------------+-----------------+
+
+  |
+
+  **Usable Contexts**
+
+  .. role:: fg-green
+  .. role:: fg-red
+
+  +---------------------------------------+-----------------+
+  | Context                               | Usable          |
+  +=======================================+=================+
+  | App menu                              | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Kiosk promotion area                  | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Storytelling content                  | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Purple webview                        | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Push notification Manager             | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
+  | Push notifications Braze / Pinpoint   | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | In-App Messages Braze                 | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+
+.. versioned-toggle-box:: Cancel OAuth login flow
+  :color: purple
+  :versionadded-android: 3.11.0
+  :versionadded-ios: 3.11.0
+
+  Cancels the entitlement OAuth login flow.
+
+  |
+
+  **URL**
+
+  purple://kiosk/entitlement/login/oauth/cancel
 
   **Usable Contexts**
 
