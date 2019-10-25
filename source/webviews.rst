@@ -18,7 +18,7 @@ Apps support the :code:`window.print` JavaScript-API.
 The standard system print dialog is opened if :code:`window.print` is called.
 
 Support for window.open
-************************
+***********************
 
 Apps support the :code:`window.open` JavaScript-API. Starting with 3.11 links
 opened via this API will be opened in the internal App Browser (with title bar, status bar and navigation, as a "new window")
@@ -30,6 +30,19 @@ Cookies
 *******
 
 Starting with version 3.13.0 cookies are enabled for all webviews in the Android and iOS apps.
+
+Accessing dynamic resources
+***************************
+
+Starting with version 5.1 it is possible to access files inside the dynamic resources by using the :code:`resource` scheme.
+These urls must have the following structure:
+
+resource://dynamic/``<path>``
+
+The path should point towards a file inside the dynamic resources.
+These paths are resolved based on device's preferred languages. The same goes for all relative paths if the html itself was loaded using this scheme.
+This allows reducing the total size of the dynamic resources bundle by putting common files in the default folder and localization related files in their respective folders (e.g. de, en, ...).
+For further information on dynamic resources and how files are resolved based on the device's preferred languages see the corresponding :ref:`page <dyn-res-localization>`.
 
 JavaScript-Interfaces
 #####################
@@ -684,12 +697,15 @@ Metadata / information about the app and issue can be accessed through this java
     :versionadded-ios: 2.4.0
     :versionadded-composer: 3.1.0
     :versionadded-web-player: 2.6.0
+    :versionchanged: Android/iOS 3.17: Property now available in dynamic HTML and In-App-Browser (see below)
 
     The id of the currently viewed issue.
 
     **Available contexts**
 
     * Storytelling Content
+    * Dynamic HTML-Content (when opened via an ST-Action)
+    * In-App-Browser (when opened via an ST-Action)
 
   .. versioned-toggle-box:: issue_name
     :color: blue
@@ -700,11 +716,32 @@ Metadata / information about the app and issue can be accessed through this java
 
     The name of the currently viewed issue.
 
-    On macOS this always returns "Preview Publication".
+    |
+
+    In the Composer Preview on macOS this always returns "Preview Publication".
+
+    |
 
     **Available contexts**
 
     * Storytelling Content
+    * Dynamic HTML-Content (when opened via an ST-Action)
+    * In-App-Browser (when opened via an ST-Action)
+
+  .. versioned-toggle-box:: issue_alias
+    :color: blue
+    :versionadded-android: 3.17.0
+    :versionadded-ios: 3.17.0
+
+    The alias of the currently viewed issue.
+
+    |
+
+    **Available contexts**
+
+    * Storytelling Content
+    * Dynamic HTML-Content (when opened via an ST-Action)
+    * In-App-Browser (when opened via an ST-Action)
 
   .. versioned-toggle-box:: publication_id
     :color: blue
@@ -712,14 +749,21 @@ Metadata / information about the app and issue can be accessed through this java
     :versionadded-ios: 2.4.0
     :versionadded-composer: 3.1.0
     :versionadded-web-player: 2.6.0
+    :versionchanged: Android/iOS 3.17: Property now available in dynamic HTML and In-App-Browser (see below)
 
     The id of the publication of the currently viewed issue.
 
-    On macOS this always returns "Preview Publication".
+    |
+
+    In the Composer Preview on macOS this always returns "Preview Publication".
+
+    |
 
     **Available contexts**
 
     * Storytelling Content
+    * Dynamic HTML-Content (when opened via an ST-Action)
+    * In-App-Browser (when opened via an ST-Action)
 
   .. versioned-toggle-box:: publication_name
     :color: blue
@@ -727,6 +771,7 @@ Metadata / information about the app and issue can be accessed through this java
     :versionadded-ios: 2.4.0
     :versionadded-composer: 3.1.0
     :versionadded-web-player: 2.6.0
+    :versionchanged: Android/iOS 3.17: Property now available in dynamic HTML and In-App-Browser (see below)
 
     The name of the publication of the currently viewed issue.
 
@@ -735,6 +780,8 @@ Metadata / information about the app and issue can be accessed through this java
     **Available contexts**
 
     * Storytelling Content
+    * Dynamic HTML-Content (when opened via an ST-Action)
+    * In-App-Browser (when opened via an ST-Action)
 
   .. versioned-toggle-box:: page_id
     :color: blue
@@ -815,6 +862,8 @@ Metadata / information about the app and issue can be accessed through this java
 
     * HTML onboarding screen
 
+.. _webviews_storefront:
+
 Storefront
 **********
 
@@ -861,6 +910,15 @@ Web content can access storefront data through a javascript interface.
            * progress value.
            */
           getIssueStates: function (issueIds, callback) {
+              // Implementation
+          },
+          /**
+           * Gets the issue object for the given issueId. The callback function
+           * will be called with the corresponding Issue object. If the issueId
+           * is the id of a preview issue, then the corresponding parent issue
+           * will be returned.
+           */
+          getIssueById: function (issueId, callback) {
               // Implementation
           },
           /**
@@ -1023,6 +1081,7 @@ Web content can access storefront data through a javascript interface.
   :versionadded-android: 3.4.0
   :versionadded-ios: 3.4.0
   :versionadded-web-kiosk: 3.7.0
+  :versionchanged: Android/iOS 3.15: The issue alias is now also available, 4.0: :code:`LOCKED` issues are not returned anymore, 5.1: Added :code:`publicationId`
   :color: purple
 
   This method needs to be called to obtain a list of issues for a specific publication.
@@ -1036,6 +1095,8 @@ Web content can access storefront data through a javascript interface.
 
     {
       "issueId": "aabbcc",
+      "publicationId": "ddeeff",
+      "alias": "alias2",
       "displayName": "Issue A",
       "displayDescription": "Fancy issue description",
       "properties": [
@@ -1071,6 +1132,7 @@ Web content can access storefront data through a javascript interface.
   :versionadded-android: 3.4.0
   :versionadded-ios: 3.4.0
   :versionadded-web-kiosk: 3.7.0
+  :versionchanged: 4.0: removed :code:`LOCKED` and :code:`UPDATE` states, added updateAvailable to the state model and states for progressive loading, 5.0: removed :code:`INSTALLING` state
   :color: purple
 
   To obtain the state of specific issues this method can be used.
@@ -1083,33 +1145,53 @@ Web content can access storefront data through a javascript interface.
 
     {
       "issueId": "aabbcc",
-      "state": "<STATE>"
+      "state": "<STATE>",
+      "updateAvailable": <true|false>
     }
 
+  Certain states are only available depending whether progressive loading is enabled or not.
+  Note that issues that are hidden through entitlement are not returned by getIssues anymore until they are unlocked.
   The following table describes the possible issue states.
 
-    +------------------+-------------------------------------------------------------------------------------+
-    | State            | Description                                                                         |
-    +==================+=====================================================================================+
-    | LOCKED           | locked through entitlement -> not visible for the user                              |
-    +------------------+-------------------------------------------------------------------------------------+
-    | COMING_SOON      | coming soon enabled -> visible, but not downloadable                                |
-    +------------------+-------------------------------------------------------------------------------------+
-    | PURCHASABLE      | not purchased                                                                       |
-    +------------------+-------------------------------------------------------------------------------------+
-    | AVAILABLE        | download possible -> purchased, or no paid content                                  |
-    +------------------+-------------------------------------------------------------------------------------+
-    | DOWNLOAD_PAUSED  | download started and paused                                                         |
-    +------------------+-------------------------------------------------------------------------------------+
-    | DOWNLOADING      | downloading                                                                         |
-    +------------------+-------------------------------------------------------------------------------------+
-    | INSTALLING       | extracting, post processing                                                         |
-    +------------------+-------------------------------------------------------------------------------------+
-    | INSTALLED        | downloaded, extracted, available for reading                                        |
-    +------------------+-------------------------------------------------------------------------------------+
-    | UPDATE           | downloaded and new version available (=local version does not match remote version) |
-    +------------------+-------------------------------------------------------------------------------------+
+    .. role:: fg-gray
 
+    +---------------------------------+-------------------------------------------------------------------------------------+------------------+---------+
+    | State                           | Description                                                                         | PL               | PK      |
+    +=================================+=====================================================================================+==================+=========+
+    | LOCKED                          | locked through entitlement -> not visible for the user                              | :fg-green:`off`  | <4.0    |
+    +---------------------------------+-------------------------------------------------------------------------------------+------------------+---------+
+    | COMING_SOON                     | coming soon enabled -> visible, but not downloadable                                | :fg-gray:`any`   | >=3.4.0 |
+    +---------------------------------+-------------------------------------------------------------------------------------+------------------+---------+
+    | PURCHASABLE                     | not purchased                                                                       | :fg-gray:`any`   | >=3.4.0 |
+    +---------------------------------+-------------------------------------------------------------------------------------+------------------+---------+
+    | AVAILABLE                       | download possible -> purchased, or no paid content                                  | :fg-gray:`any`   | >=3.4.0 |
+    +---------------------------------+-------------------------------------------------------------------------------------+------------------+---------+
+    | INDEXING                        | minimal required                                                                    | :fg-green:`on`   | >=4.0   |
+    +---------------------------------+-------------------------------------------------------------------------------------+------------------+---------+
+    | PARTIALLY_INSTALLED_DOWNLOADING | ready to be displayed, still loading and not finished yet                           | :fg-green:`on`   | >=4.0   |
+    +---------------------------------+-------------------------------------------------------------------------------------+------------------+---------+
+    | PARTIALLY_INSTALLED_PAUSED      | ready to be displayed, not loading and not finished yet                             | :fg-green:`on`   | >=4.0   |
+    +---------------------------------+-------------------------------------------------------------------------------------+------------------+---------+
+    | DOWNLOAD_PAUSED                 | download started and paused                                                         | :fg-red:`off`    | >=3.4.0 |
+    +---------------------------------+-------------------------------------------------------------------------------------+------------------+---------+
+    | DOWNLOADING                     | downloading (and extracting on >= PK 5.0)                                           | :fg-red:`off`    | >=3.4.0 |
+    +---------------------------------+-------------------------------------------------------------------------------------+------------------+---------+
+    | INSTALLING                      | extracting, post processing                                                         | :fg-red:`off`    | <5.0    |
+    +---------------------------------+-------------------------------------------------------------------------------------+------------------+---------+
+    | INSTALLED                       | downloaded, extracted, available for reading                                        | :fg-gray:`any`   | >=3.4.0 |
+    +---------------------------------+-------------------------------------------------------------------------------------+------------------+---------+
+    | UPDATE                          | downloaded and new version available (=local version does not match remote version) | :fg-red:`off`    | <4.0    |
+    +---------------------------------+-------------------------------------------------------------------------------------+------------------+---------+
+
+
+.. versioned-toggle-box:: getIssueById
+  :versionadded-android: 5.1
+  :versionadded-ios: 5.1
+  :color: purple
+
+  This method can be used to request information for a single issue with a given issueId.
+  The callback function will be called with the corresponding Issue Object. See getIssues for the structure of such an object.
+  When the passed issueId is the id of a preview issue then the corresponding parent issue is returned instead.
 
 .. versioned-toggle-box:: startDownload
   :versionadded-android: 3.4.0
@@ -1138,12 +1220,13 @@ Web content can access storefront data through a javascript interface.
 .. versioned-toggle-box:: addIssueStateListener
   :versionadded-android: 3.4.0
   :versionadded-ios: 3.4.0
+  :versionchanged: 5.0 changed behavior of the progress in the :code:`DOWNLOADING` state
   :color: purple
 
   The :code:`addIssueStateListener` method allows the registration of a listener that will be called each time when the state of an issue changes.
   This method takes a single parameter which is a callback function. It will be called with issue state objects which contain an additional :code:`progress` value.
-  This :code:`progress` can be a value between 0 and 100. It is always 0 except for the :code:`DOWNLOADING` and :code:`INSTALLING` state.
-  The progress for the :code:`INSTALLING` state is currently only implemented in Android apps.
+  This :code:`progress` can be a value between 0 and 100.
+
   For a description of the states see the table in :code:`getIssueStates`.
 
   |
@@ -1154,6 +1237,7 @@ Web content can access storefront data through a javascript interface.
     {
       "issueId": "aabbcc",
       "state": "<STATE>",
+      "updateAvailable": <true|false>,
       "progress": 0
     }
 
@@ -1193,10 +1277,33 @@ Web content can access storefront data through a javascript interface.
 .. versioned-toggle-box:: addUpdateListener
   :versionadded-android: 3.11.0
   :versionadded-ios: 3.11.0
+  :versionchanged: Android/iOS 3.15: Callback now has a parameter (see below)
   :color: purple
 
-  The :code:`addUpdateListener` method allows the registration of a listener that will be called each time the kiosk has been updated.
-  This method takes a single parameter which is a callback function which itself takes no parameters.
+  The :code:`addUpdateListener` method allows the registration of a listener that will be called each time the kiosk has been changed due to a sync or login change.
+  This method takes a single parameter which is a callback function which itself takes one parameter.
+
+  This parameter will be a JSON object with the following format:
+
+  .. code-block:: javascript
+    :linenos:
+
+    {
+       type: "PARTIAL|FULL|LOGIN|LOGOUT",
+       success: true
+    }
+
+  Or for errors:
+
+  .. code-block:: javascript
+    :linenos:
+
+    {
+       type: "PARTIAL|FULL|LOGIN|LOGOUT",
+       success: false,
+       error_code: "OFFLINE|UNKNOWN"
+    }
+
 
 .. versioned-toggle-box:: removeUpdateListener
   :versionadded-android: 3.11.0
@@ -1612,7 +1719,7 @@ of the current issue.
       "section": "Section",
       "shortTitle": "Old Content Short-Title",
       "teaser": "Old Content Only",
-      "thumbnailURL": "pkmedia://thumbs/thumb-page123.jpg"
+      "thumbnailURL": "thumbs/thumb-page123.jpg"
     }
 
 State
@@ -1695,14 +1802,42 @@ The events are forwarded to the app's enabled :doc:`tracking services<tracking>`
 
   window.purple = {
       tracking: {
-          trackAction: function (key, optionalParams) {
-              // Implementation
+      /**
+      * Track an action, e.g. a tap on a button.
+      *
+      * @param {string} key the event name
+      * @param {Object} [optionalParams] can be sent with each event if the tracking service supports this.
+      * Every key will be included in the event. The values can contain all placeholders supported for the event
+      * and will be evaluated (see app tracking) when sending the event to the service.
+      * @param {Function} [callback] is called when the event has been tracked
+      */
+      trackAction: function (key, optionalParams, callback) {
           },
-          trackView: function (key, optionalParams) {
-              // Implementation
+      /**
+      * Track a view, e.g. a currently shown screen.
+      *
+      * @param {string} key the key of the screen event
+      * @param {Object} [optionalParams] can be sent with each event if the tracking service supports this.
+      * Every key will be included in the event. The values can contain all placeholders supported for the event
+      * and will be evaluated (see app tracking) when sending the event to the service.
+      * @param {Function} [callback] is called when the event has been tracked
+      */
+      trackView: function (key, optionalParams, callback) {
           },
-          trackPurchase: function (key, productId, price, currencyCode, transactionId, optionalParams) {
-              // Implementation
+      /**
+      * Track a purchase.
+      *
+      * @param {string} key the purchase event key
+      * @param {string} productId
+      * @param {number} price
+      * @param {string} currencyCode
+      * @param {string} transactionId
+      * @param {Object} [optionalParams] can be sent with each event if the tracking service supports this.
+      * Every key will be included in the event. The values can contain all placeholders supported for the event
+      * and will be evaluated (see app tracking) when sending the event to the service.
+      * @param {Function} [callback] is called when the event has been tracked
+      */
+      trackPurchase: function (key, productId, price, currencyCode, transactionId, optionalParams, callback) {
           }
       }
   }
@@ -1716,33 +1851,42 @@ The events are forwarded to the app's enabled :doc:`tracking services<tracking>`
   :versionadded-ios: 3.10.5
   :versionadded-web-player: 3.11.0
   :versionadded-web-kiosk: 3.11.0
+  :versionchanged: 3.14.0 added callback
   :color: blue
 
   The :code:`trackAction` method can be used to track a custom action event.
 
   It takes two parameters: key and optionalParams.
+  Starting with 3.14.0 the method takes a callback function which is called when
+  the event has been tracked.
 
 .. versioned-toggle-box:: trackView
   :versionadded-android: 3.10.3
   :versionadded-ios: 3.10.5
   :versionadded-web-player: 3.11.0
   :versionadded-web-kiosk: 3.11.0
+  :versionchanged: 3.14.0 added callback
   :color: blue
 
   The :code:`trackView` method can be used to track a custom view event.
 
   It takes two parameters: key and optionalParams.
+  Starting with 3.14.0 the method takes a callback function which is called when
+  the event has been tracked.
 
 .. versioned-toggle-box:: trackPurchase
   :versionadded-android: 3.10.3
   :versionadded-ios: 3.10.5
   :versionadded-web-player: 3.11.0
   :versionadded-web-kiosk: 3.11.0
+  :versionchanged: 3.14.0 added callback
   :color: blue
 
   The :code:`trackPurchase` method can be used to track a custom purchase event.
 
   It takes six parameters: key, productId, price, currencyCode, transactionId and optionalParams.
+  Starting with 3.14.0 the method takes a callback function which is called when
+  the event has been tracked.
 
 Media
 *****
@@ -1769,6 +1913,12 @@ continue playing even if the user puts the app to the background.
           // Implementation
       },
       seekTo: function(time) {
+          // Implementation
+      },
+      setPlaybackRate: function (rate) {
+          // Implementation
+      },
+      getPlaybackRate: function (callback) {
           // Implementation
       },
       addStatusListener: function (statusListener) {
@@ -1822,6 +1972,22 @@ continue playing even if the user puts the app to the background.
 
   Seeks to the given time in the current audio playback. This method takes the
   desired time in milliseconds.
+
+.. versioned-toggle-box:: setPlaybackRate
+  :versionadded-android: 4.0
+  :versionadded-ios: 4.0
+  :color: blue
+
+  Sets the playback rate to the specified value.
+  Only values between 0.5 and 2.0 are allowed. Values outside these bounds will be clipped to their respective limits.
+  The playback rate gets reset to the default rate of 1.0 on app restarts.
+
+.. versioned-toggle-box:: getPlaybackRate
+  :versionadded-android: 4.0
+  :versionadded-ios: 4.0
+  :color: blue
+
+  Requests the current playback rate which will be the single parameter of the callback function.
 
 .. versioned-toggle-box:: addStatusListener
   :versionadded-android: 3.11.0

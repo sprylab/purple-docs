@@ -10,6 +10,7 @@ Welcome to Purple's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+   appmenu
    deep_links
    dynamic_resources
    tracking

@@ -894,7 +894,7 @@ Views
   | :code:`ISSUE_NAME`        | The name of the issue.                          |
   +---------------------------+-------------------------------------------------+
 
-.. versioned-toggle-box:: KIOSK_ISSUE_PURCHASE
+.. versioned-toggle-box:: KIOSK_ISSUE_PREVIEW
   :color: purple
   :versionadded-android: 2.1.0
   :versionadded-ios: 2.1.0

@@ -4,6 +4,8 @@ Braze
 
 .. versionadded:: 2.1.0
 
+.. warning:: Please note: Due to changed conditions for app developers on the part of Braze, we can no longer support this service free of charge. Therefore, we do not provide any general warranty for correct operation when activating this feature. Individual support inquiries are welcome via support@sprylab.com.
+
 |Braze| (formerly known as Appboy) is a tracking service which supports tracking events (actions / purchases) and storing attributes.
 
 .. |Braze| raw:: html
