@@ -3,6 +3,7 @@ Google Analytics
 ################
 
 .. versionadded:: 2.1.0
+.. deprecated:: 5.0 Google Analytics is not available anymore in Apps.
 
 |GoogleAnalytics| is a tracking service which supports tracking events (actions, views, purchases).
 
