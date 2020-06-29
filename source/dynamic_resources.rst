@@ -202,6 +202,16 @@ App Menu
 The app's side menu can be configured using the :code:`app_menu.xml` file.
 For a detailed explanation of all its features and configuration see :doc:`App Menu </apps/appmenu>`.
 
+.. _dyn-res-dynamicconfig:
+
+Dynamic Configuration
+*********************
+
+Starting with PK 5.2.0 it is possible to place a :code:`config.json` in the dynamic resources.
+This is a simple key-value file which can be used by the app for some dynamic configuration.
+
+Currently only the :code:`onboarding_version` key is used by the app to determine the version of the current onboarding.
+
 .. _dyn-res-channels:
 
 Channels

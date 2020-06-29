@@ -139,6 +139,12 @@ The purple-Object is available instantly after loading the script.
       },
       media: {
           ...
+      },
+      /**
+       * Close the current in app browser or article view
+       */
+      closeView: function() {
+          // Implementation
       }
   }
 
@@ -160,6 +166,15 @@ This function is then called by the native implementation with the value as its 
   window.purple.getSomething(function(valueOfSomething) {
       console.log(valueOfSomething)
   });
+
+.. versioned-toggle-box:: closeView
+  :color: blue
+  :versionadded-android: 2.6.0
+  :versionadded-ios: 2.6.0
+  :versionchanged: 5.2.0 Can also be used to close the article pager now
+
+  The :code:`closeView` method can be used to close certain views such as the in app browser, entitlement and article views.
+  It is only possible to close modal views and not embedded ones.
 
 App
 ***
@@ -713,6 +728,7 @@ Metadata / information about the app and issue can be accessed through this java
     :versionadded-ios: 2.4.0
     :versionadded-composer: 3.1.0
     :versionadded-web-player: 2.6.0
+    :versionchanged: Android/iOS 3.17: Property now available in dynamic HTML and In-App-Browser (see below)
 
     The name of the currently viewed issue.
 
@@ -1081,7 +1097,7 @@ Web content can access storefront data through a javascript interface.
   :versionadded-android: 3.4.0
   :versionadded-ios: 3.4.0
   :versionadded-web-kiosk: 3.7.0
-  :versionchanged: Android/iOS 3.15: The issue alias is now also available, 4.0: :code:`LOCKED` issues are not returned anymore, 5.1: Added :code:`publicationId`
+  :versionchanged: Android/iOS 3.15: The issue alias is now also available, 4.0: :code:`LOCKED` issues are not returned anymore, 5.1: Added :code:`publicationId`, 5.2: Added :code:`externalIssueId`
   :color: purple
 
   This method needs to be called to obtain a list of issues for a specific publication.
@@ -1265,7 +1281,7 @@ Web content can access storefront data through a javascript interface.
       "success": true
     }
 
-  For failures it will be json object which may contain an error code:
+  For failures it will be a json object which may contain an error code:
 
   .. code-block:: javascript
 
@@ -1796,6 +1812,10 @@ The events are forwarded to the app's enabled :doc:`tracking services<tracking>`
 
   User Attributes are currently not supported.
 
+.. note::
+
+  All the keys in the optionalParams object will be automatically converted to upper case.
+
 .. code-block:: javascript
   :linenos:
   :caption: Tracking JavaScript-Interface
@@ -1893,6 +1913,17 @@ Media
 
 This API can be used to play remote audio streams and files. The audio will
 continue playing even if the user puts the app to the background.
+
+.. property:: background_mode_audio_enabled
+  :color: blue
+  :versionadded-ios: 3.11.0
+  :type: boolean
+  :default: false
+
+  This property enables the background audio mode for iOS apps.
+  This allows the playback to continue when the app is moved to the background.
+
+  Note that enabling this property also means that other audio applications get interrupted.
 
 .. code-block:: javascript
   :linenos:
