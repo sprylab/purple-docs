@@ -823,7 +823,7 @@ Kiosk
   :versionadded-android: 2.7.0
   :versionadded-ios: 2.7.0
 
-  Opens the preview view of an issue in the kiosk via its id or its alias.
+  Opens the preview view of an issue in the kiosk via its ID or its alias.
 
   |
 
@@ -1274,7 +1274,7 @@ Kiosk
   +---------------------------------------------+-----------------------------------------------------------------------------------------------+
   | current                                     | Remains in the current state.                                                                 |
   |                                             |                                                                                               |
-  | (or issue id or alias of the current issue) |                                                                                               |
+  | (or issue ID or alias of the current issue) |                                                                                               |
   +---------------------------------------------+-----------------------------------------------------------------------------------------------+
 
   |
@@ -1286,13 +1286,13 @@ Kiosk
   +-----------------------------+-----------------------------+-----------------------------------------------------------------------------------------------+
   | <ISSUE>                     | <PAGE>                      | Expected result                                                                               |
   +=============================+=============================+===============================================================================================+
-  | :code:`<ISSUE_ID>`          | :code:`<PAGE_ID>`           | Opens an issue via its issue id on the specified page (page id, page alias or page index).    |
+  | :code:`<ISSUE_ID>`          | :code:`<PAGE_ID>`           | Opens an issue via its issue ID on the specified page (page ID, page alias or page index).    |
   |                             +-----------------------------+                                                                                               |
   |                             | alias/:code:`<PAGE_ALIAS>`  |                                                                                               |
   |                             +-----------------------------+                                                                                               |
   |                             | index/:code:`<PAGE_INDEX>`  |                                                                                               |
   +-----------------------------+-----------------------------+-----------------------------------------------------------------------------------------------+
-  | alias/:code:`<ISSUE_ALIAS>` | :code:`<PAGE_ID>`           | Opens an issue via its alias  on the specified page (page id, page alias or page index).      |
+  | alias/:code:`<ISSUE_ALIAS>` | :code:`<PAGE_ID>`           | Opens an issue via its alias  on the specified page (page ID, page alias or page index).      |
   |                             +-----------------------------+                                                                                               |
   |                             | alias/:code:`<PAGE_ALIAS>`  |                                                                                               |
   |                             +-----------------------------+                                                                                               |
@@ -1300,7 +1300,7 @@ Kiosk
   +-----------------------------+-----------------------------+-----------------------------------------------------------------------------------------------+
   | current                     | :code:`<PAGE_ID>`           | Opens the specified page of the current issue.                                                |
   |                             +-----------------------------+                                                                                               |
-  | (or issue id or alias       | alias/:code:`<PAGE_ALIAS>`  |                                                                                               |
+  | (or issue ID or alias       | alias/:code:`<PAGE_ALIAS>`  |                                                                                               |
   | of the current issue)       +-----------------------------+                                                                                               |
   |                             | index/:code:`<PAGE_INDEX>`  |                                                                                               |
   +-----------------------------+-----------------------------+-----------------------------------------------------------------------------------------------+
@@ -1310,7 +1310,7 @@ Kiosk
   +-----------------------------+-----------------------------+-----------------------------------------------------------------------------------------------+
   | current                     | current                     | Remains in the current state.                                                                 |
   |                             |                             |                                                                                               |
-  | (or issue id or alias       | (or page id, alias or index |                                                                                               |
+  | (or issue ID or alias       | (or page ID, alias or index |                                                                                               |
   | of the current issue)       | of the current issue)       |                                                                                               |
   +-----------------------------+-----------------------------+-----------------------------------------------------------------------------------------------+
 
@@ -1345,7 +1345,7 @@ Kiosk
   +-----------------------------+-------------------------+-----------------------------------------------------------------------------------------------+
   | current                     | :code:`<ELEMENT_ID>`    | Remains in the current state.                                                                 |
   |                             +-------------------------+                                                                                               |
-  | (or issue id or alias       | :code:`<ELEMENT_ALIAS>` |                                                                                               |
+  | (or issue ID or alias       | :code:`<ELEMENT_ALIAS>` |                                                                                               |
   | of the current issue)       |                         |                                                                                               |
   +-----------------------------+-------------------------+-----------------------------------------------------------------------------------------------+
 
@@ -1366,7 +1366,7 @@ Kiosk
   +-----------------------------+----------------------------+-------------------------+----------------------------------------------------------------------------------------------------+
   | current                     | :code:`<PAGE_ID>`          | :code:`<ELEMENT_ID>`    | Opens the specified page of the current issue and jumps to the specified element if possible.      |
   |                             +----------------------------+-------------------------+                                                                                                    |
-  | (or issue id or alias       | alias/:code:`<PAGE_ALIAS>` | :code:`<ELEMENT_ALIAS>` |                                                                                                    |
+  | (or issue ID or alias       | alias/:code:`<PAGE_ALIAS>` | :code:`<ELEMENT_ALIAS>` |                                                                                                    |
   | of the current issue)       |                            |                         |                                                                                                    |
   +-----------------------------+----------------------------+-------------------------+----------------------------------------------------------------------------------------------------+
   | :code:`<ISSUE_ID>`          | current                    | :code:`<ELEMENT_ID>`    | Opens the issue on the first page and jumps to the specified element if possible.                  |
@@ -1375,7 +1375,7 @@ Kiosk
   +-----------------------------+----------------------------+-------------------------+----------------------------------------------------------------------------------------------------+
   | current                     | current                    | :code:`<ELEMENT_ID>`    | Jumps to the specified element on the current page of the current issue.                           |
   |                             |                            +-------------------------+                                                                                                    |
-  | (or issue id or alias       | (or page id or alias       | :code:`<ELEMENT_ALIAS>` |                                                                                                    |
+  | (or issue ID or alias       | (or page ID or alias       | :code:`<ELEMENT_ALIAS>` |                                                                                                    |
   | of the current issue)       | of the current issue)      |                         |                                                                                                    |
   +-----------------------------+----------------------------+-------------------------+----------------------------------------------------------------------------------------------------+
 
@@ -1439,7 +1439,7 @@ Kiosk
   +-----------------+---------------+-------------------------------------------------------------------------------------------------------------+
   | Query Parameter | Optional      | Description                                                                                                 |
   +=================+===============+=============================================================================================================+
-  | fallback_url    | :fg-red:`YES` | The url which should be opened if no issue with the external issue id can be found.                         |
+  | fallback_url    | :fg-red:`YES` | The url which should be opened if no issue with the external issue ID can be found.                         |
   +-----------------+---------------+-------------------------------------------------------------------------------------------------------------+
   | target          | :fg-red:`YES` | The target for the fallback_url. Can be "_blank" for external window, or empty / omitted for inapp browser. |
   +-----------------+---------------+-------------------------------------------------------------------------------------------------------------+
@@ -1512,6 +1512,55 @@ Kiosk
   | Push notifications Braze / Pinpoint   | :fg-green:`YES` |
   +---------------------------------------+-----------------+
   | In-App Messages Braze                 | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+
+.. raw:: pdf
+
+   PageBreak
+
+Presenter
+#########
+
+.. versioned-toggle-box:: Navigate between articles
+  :color: dark-purple
+  :versionadded-android: 3.15.0
+  :versionadded-ios: 3.15.0
+  :versionchanged: 5.2.0 now accepts an issue ID instead of the :code:`previous` and :code:`next` keywords.
+
+  Navigates to the given issue within the current article pager.
+  Instead of using an issue ID it is possible to use :code:`previous` and :code:`next` to navigate to the previous or next issue.
+
+  |
+
+  **URL**
+
+  purple://presenter/issue/:code:`<ISSUE_ID>|previous|next`
+
+  |
+
+  .. note:: These deep links only work within an article pager that was opened via the JavaScript-API. And only articles within this pager can be accessed.
+
+  **Usable Contexts**
+
+  .. role:: fg-green
+  .. role:: fg-red
+
+  +---------------------------------------+-----------------+
+  | Context                               | Usable          |
+  +=======================================+=================+
+  | App menu                              | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
+  | Kiosk promotion area                  | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
+  | Storytelling content                  | :fg-green:`YES` |
+  +---------------------------------------+-----------------+
+  | Purple webview                        | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
+  | Push notification Manager             | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
+  | Push notifications Braze / Pinpoint   | :fg-red:`NO`    |
+  +---------------------------------------+-----------------+
+  | In-App Messages Braze                 | :fg-red:`NO`    |
   +---------------------------------------+-----------------+
 
 .. raw:: pdf
@@ -1658,13 +1707,13 @@ Content
   | In-App Messages Braze                 | :fg-red:`NO`    |
   +---------------------------------------+-----------------+
 
-.. versioned-toggle-box:: Navigate inside an issue via page id
+.. versioned-toggle-box:: Navigate inside an issue via page ID
   :color: green
   :versionadded-android: 3.11.0
   :versionadded-ios: 3.11.0
   :versionadded-web-player: 3.11.0
 
-  Navigates inside an issue to the corresponding page via its **id**.
+  Navigates inside an issue to the corresponding page via its **ID**.
 
   |
 

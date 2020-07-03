@@ -28,20 +28,21 @@ Currently Purple DS apps support several different tracking services.
 
 - :doc:`Adjust <tracking/adjust>`
 - :doc:`Adobe Analytics <tracking/adobe>`
+- :doc:`Amazon Pinpoint <tracking/pinpoint>`
+- :doc:`AT Internet <tracking/atinternet>`
 - :doc:`Braze (Appboy) <tracking/appboy>`
 - :doc:`Facebook <tracking/facebook>`
 - :doc:`Firebase Analytics <tracking/firebase_analytics>`
 - :doc:`Flurry <tracking/flurry>`
 - :doc:`Google Analytics <tracking/google_analytics>`
 - :doc:`IVW <tracking/ivw>`
-- :doc:`Amazon Pinpoint <tracking/pinpoint>`
-
 
 .. toctree::
   :hidden:
 
   tracking/adjust
   tracking/adobe
+  tracking/atinternet
   tracking/appboy
   tracking/facebook
   tracking/firebase_analytics
